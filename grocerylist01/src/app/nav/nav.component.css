@@ -21,3 +21,7 @@ nav ul {
 nav ul li {
     display: inline; 
 }
+
+nav ul li a {
+    color: #000;
+}
