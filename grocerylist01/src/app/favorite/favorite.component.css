@@ -3,19 +3,12 @@ ul {
 }
 
 button { 
-    font-size: 1.5em; 
+    font-size: .5em; 
     background-color: #FFFFFF;
     color: #707070;
-    margin-top: 1%; 
-}
-
-.favorite {
-    font-size: .5em;
-    margin-top: 0; 
 }
 
 input[type="text"] {
-    margin-top: 1%; 
     width: 20%; 
 }
 
@@ -26,4 +19,3 @@ padding: 5% 15%;
 #container ul li {
     font-size: 1.5em; 
 }
-
