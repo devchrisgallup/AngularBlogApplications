@@ -1,0 +1,21 @@
+ul {
+    list-style-type: none; 
+}
+
+button { 
+    font-size: .5em; 
+    background-color: #FFFFFF;
+    color: #707070;
+}
+
+input[type="text"] {
+    width: 20%; 
+}
+
+#container {
+padding: 5% 15%; 
+}
+
+#container ul li {
+    font-size: 1.5em; 
+}
