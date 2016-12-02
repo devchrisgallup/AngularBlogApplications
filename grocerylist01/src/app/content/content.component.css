@@ -1,5 +1,6 @@
 ul {
     list-style-type: none; 
+    padding: 0;
 }
 
 button { 
@@ -20,7 +21,7 @@ input[type="text"] {
 }
 
 #container {
-padding: 5% 15%; 
+    padding: 5% 15%; 
 }
 
 #container ul li {
