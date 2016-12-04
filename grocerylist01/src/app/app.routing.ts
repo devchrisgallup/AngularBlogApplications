@@ -1,7 +1,7 @@
+// Angular
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NavComponent } from './nav/nav.component';
-import { FooterComponent } from './footer/footer.component';
+// Components that we want to route
 import { FavoriteComponent } from './favorite/favorite.component';
 import { ContentComponent } from './content/content.component';
 

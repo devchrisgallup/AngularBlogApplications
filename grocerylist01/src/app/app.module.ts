@@ -15,7 +15,6 @@ import { AppRoutingModule, routingComponents } from './app.routing';
 
 
 @NgModule({
-  // all the components for AppModule
   declarations: [
     AppComponent,
     NavComponent,
