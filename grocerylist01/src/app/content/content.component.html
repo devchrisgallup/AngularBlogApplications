@@ -1,9 +1,12 @@
 <div id="container">
-  <ul>
-    <li *ngFor="let item of items | async"><button class="btn favorite">+</button>{{item.$value}}</li>
-  </ul>
-    <input type="text" class="form-control" placeholder="Food Item">
-    <button id="add" class="btn">Add</button>
-    <button id="remove" class="btn">Remove</button>
-
+<ul>
+  <li *ngFor="let item of items | async">
+    <span>{{item.$value}}</span> <span (click)="delete(item)">[x]</span>
+  </li>
+</ul>
+<h3>Grocery List:</h3>
+<input type="text" class="form-control" [(ngModel)]="newItem" (keydown.enter)="add()" />
 </div>
+
+
+
