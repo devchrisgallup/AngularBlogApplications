@@ -8,6 +8,11 @@ button {
     color: #707070;
 }
 
+span { 
+    margin-right: 0.5%;
+}
+
+
 input[type="text"] {
     width: 20%; 
 }

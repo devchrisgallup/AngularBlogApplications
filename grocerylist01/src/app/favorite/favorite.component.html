@@ -1,5 +1,7 @@
 <div id="container">
-  <ul>
-    <li>Bacon<button id="remove" class="btn">Remove</button></li>
-  </ul>
+<ul>
+  <li *ngFor="let item of items | async">
+    <span>{{item.$value}}</span><span (click)="delete(item)">[x]</span>
+  </li>
+</ul>
 </div>

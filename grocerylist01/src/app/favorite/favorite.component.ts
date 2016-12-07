@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-favorite',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private af: AngularFire) { }
+
+  items: FirebaseListObservable<any[]>;
 
   ngOnInit() {
+    this.items = this.af.database.list('/favoriteItem');
+  }
+
+  delete(item) {
+    this.items.remove(item);
   }
 
 }
