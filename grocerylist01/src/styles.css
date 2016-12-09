@@ -14,3 +14,17 @@ body, html {
     font-size: 1.5em; 
 }
 
+@media only screen and (max-width: 480px) {
+    #container {
+        padding: 5% 10%; 
+    }
+
+    #container ul li {
+        font-size: 1.5em; 
+    }
+    
+    footer {
+        visibility: hidden;
+    }
+}
+
