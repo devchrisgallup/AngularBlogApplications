@@ -1,7 +1,8 @@
 <div id="container">
-<ul>
-  <li *ngFor="let item of items | async">
-    <span>{{item.$value}}</span><span (click)="delete(item)">[x]</span>
-  </li>
-</ul>
+  <h1>Favorites List</h1>
+  <ul>
+    <li *ngFor="let item of items | async">
+      <span>{{item.$value}}</span><span (click)="delete(item)">[x]</span>
+    </li>
+  </ul>
 </div>

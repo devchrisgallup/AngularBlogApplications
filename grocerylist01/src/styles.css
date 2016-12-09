@@ -5,3 +5,12 @@ body, html {
     color: #FFF; 
     background-color: #4285f4;
 }
+
+#container {
+    padding: 5% 30%; 
+}
+
+#container ul li {
+    font-size: 1.5em; 
+}
+
