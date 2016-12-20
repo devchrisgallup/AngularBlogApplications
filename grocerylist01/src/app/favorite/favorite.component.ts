@@ -11,9 +11,15 @@ export class FavoriteComponent implements OnInit {
   constructor(private af: AngularFire) { }
 
   items: FirebaseListObservable<any[]>;
+  groceryList: FirebaseListObservable<any[]>;
 
   ngOnInit() {
     this.items = this.af.database.list('/favoriteItem');
+    this.groceryList = this.af.database.list('/items');
+  }
+
+  add(item) {
+    this.groceryList.push(item);
   }
 
   delete(item) {

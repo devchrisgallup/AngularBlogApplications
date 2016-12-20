@@ -30,13 +30,7 @@ export class ContentComponent implements OnInit {
   }
   
   add() {
-    console.log(this.newItem);
     this.items.push(this.newItem);
-
-    if (this.newItem === 'chris') {
-      console.log('Oh Yeah!!!');
-    }
-
     this.newItem = '';
   }
 
