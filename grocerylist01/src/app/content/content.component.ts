@@ -18,18 +18,13 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     this.items = this.af.database.list('/items');
-    this.favoriteItem = this.af.database.list('/favoriteItem');
-    this.items.subscribe(items => {
-        items.forEach(item => {
-          console.log('Item: ', item.$value);
-          if (item.$value === 'Bacon') {
-            console.log('We have Bacon.');
-          }
-        }); 
-    }); 
+    this.favoriteItem = this.af.database.list('/favoriteItem'); 
   }
   
   add() {
+    // this.items.forEach(item => {
+    //     console.log('Item:', item);
+    // });
     this.items.push(this.newItem);
     this.newItem = '';
   }
