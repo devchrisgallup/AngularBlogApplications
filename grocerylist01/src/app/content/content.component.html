@@ -1,7 +1,7 @@
 <div id="container">
   <h1>Grocery Item</h1>
   <input type="text" class="form-control" [(ngModel)]="newItem" (keydown.enter)="add()" placeholder="item to add"/>
-  <h1>List</h1>
+  <h1>Lists</h1>
   <ul>
     <li *ngFor="let item of items | async">
       <span>{{item.$value}}</span><span (click)="favorite(item.$value)">[fav]</span><span (click)="delete(item)">[x]</span>
