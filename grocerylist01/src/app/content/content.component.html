@@ -4,7 +4,7 @@
   <h1>Lists</h1>
   <ul>
     <li *ngFor="let item of items | async">
-      <span>{{item.$value}}</span><span (click)="favorite(item.$value)">[fav]</span><span (click)="delete(item)">[x]</span>
+      <span>{{item.$value}}</span><button class="btn" (click)="favorite(item.$value)">[fav]</button><button class="btn" (click)="delete(item)">[x]</button>
     </li>
   </ul>
 </div>
