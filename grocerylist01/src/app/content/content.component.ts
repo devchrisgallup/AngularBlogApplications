@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-content',
@@ -22,6 +22,7 @@ export class ContentComponent implements OnInit {
   ngOnInit() {
     this.items = this.af.database.list('/items');
     this.favoriteItem = this.af.database.list('/favoriteItem'); 
+    console.log(this.items);
   }
   
   add() {
