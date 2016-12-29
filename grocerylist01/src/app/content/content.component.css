@@ -4,6 +4,7 @@ ul {
 }
 
 button { 
+    display: inline-block; 
     font-size: 1em; 
     background-color: #FFFFFF;
     color: #707070;
@@ -11,7 +12,7 @@ button {
 }
 
 span { 
-    margin-right: 0.5%;
+    margin-left: 0.5%;
 }
 
 .favorite {
