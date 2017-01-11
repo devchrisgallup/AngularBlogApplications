@@ -1,7 +1,6 @@
 # Angular2Blog
 Angular 2 tutorial<br>
-chrisgalluptest.info/angular/index.html
-
+<a href="chrisgalluptest.info/angular/index.html">Check out the App!</a>
 I will keep all code here so you can follow along with my blog tutorial series on Angular. <br>
 # CHRIS GALLUP
 ## Journey to a programming career and beyond!
