@@ -1,0 +1,10 @@
+<h1>
+  {{title}}
+</h1>
+  <ul>
+    <!-- This async pipe will allow us to use the observable
+         Then we use interpolation to acces display the item$value -->
+    <li *ngFor="let item of items | async">
+      {{item.$value}}
+    </li>
+  </ul>
