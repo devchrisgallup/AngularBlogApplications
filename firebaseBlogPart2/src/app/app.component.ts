@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-// added imports
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
@@ -9,10 +8,22 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class AppComponent {
   title = 'Grocery List';
-  // reference to observable
+  // new item variable
+  newItem: string = ''; 
+
   items : FirebaseListObservable<any[]>;
-  // dependency injection
   constructor(private af: AngularFire) {
     this.items = af.database.list('/items');
+  }
+  // this method is called by a eventlistner
+  // when user presses the enter key
+  add() {
+    this.items.push(this.newItem); 
+    this.newItem = ''; 
+  }
+  // this method is called by a eventlistner
+  // when clicks the delete X button
+  delete(item) {
+    this.items.remove(item);
   }
 }
