@@ -1,0 +1,11 @@
+<h1>
+  {{title}}
+</h1>
+<input type="text" [(ngModel)]="newItem" (keydown.enter)="add()" placeholder="item to add"/>
+  <ul>
+    <!-- This async pipe will allow us to use the observable
+         Then we use interpolation to acces display the item$value -->
+  <li *ngFor="let item of items | async">
+      <button (click)="delete(item)">[x]</button><span>{{item.$value}}</span>
+    </li>
+  </ul>
