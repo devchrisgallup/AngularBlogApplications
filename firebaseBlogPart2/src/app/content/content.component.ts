@@ -7,27 +7,32 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-
-
-  ngOnInit() {
-  }
+  items : FirebaseListObservable<any[]>;
+  // create FirebaseListObservable reference  
+  favoriteItem: FirebaseListObservable<any[]>
   title = 'Grocery List';
-  // new item variable
   newItem: string = ''; 
 
-  items : FirebaseListObservable<any[]>;
   constructor(private af: AngularFire) {
-    this.items = af.database.list('/items');
+
   }
-  // this method is called by a eventlistner
-  // when user presses the enter key
+
+  ngOnInit() {
+    this.favoriteItem = this.af.database.list('/favoriteItem'); 
+    this.items = this.af.database.list('/items');
+  }
   add() {
     this.items.push(this.newItem); 
     this.newItem = ''; 
   }
-  // this method is called by a eventlistner
-  // when clicks the delete X button
   delete(item) {
     this.items.remove(item);
+  }
+
+  // using the value that is being 
+  // passed in and push it to the
+  // firebase database
+  favorite(item) { 
+    this.favoriteItem.push(item); 
   }
 }
