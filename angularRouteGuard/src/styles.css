@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+html, body { 
+    background-color: #5fcf80;
+    color: #FFF; 
+}
+
+ul {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+}
+
+nav {
+    text-align: center; 
+}
+
+nav ul li {
+    display: inline; 
+}
+
+nav ul li a {
+    text-decoration: none; 
+    font-size: 1.3rem; 
+    margin: 1%; 
+}
+
+/* unvisited link */
+a:link {
+    color: #FFF;
+}
+
+/* visited link */
+a:visited {
+    color: #FFF;
+}
+
+/* mouse over link */
+a:hover {
+    color: #3e474f;
+    text-decoration: underline; 
+}
+
+/* selected link */
+a:active {
+    color: #FFF;
+}
