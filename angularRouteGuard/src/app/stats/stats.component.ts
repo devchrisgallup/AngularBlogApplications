@@ -14,7 +14,6 @@ export class StatsComponent implements OnInit {
 
   saveData() {
     this.isSaved = true; 
-    console.log(this.isSaved);
   }
 
 }
