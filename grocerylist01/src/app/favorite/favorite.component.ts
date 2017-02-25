@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewContainerRef } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastOptions } from 'ng2-toastr';
 
 @Component({
   selector: 'app-favorite',
@@ -8,7 +10,9 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class FavoriteComponent implements OnInit {
 
-  constructor(private af: AngularFire) { }
+  constructor(private af: AngularFire, public toastr: ToastsManager,private vRef:ViewContainerRef) { 
+    this.toastr.setRootViewContainerRef(vRef);
+  }
 
   items: FirebaseListObservable<any[]>;
   groceryList: FirebaseListObservable<any[]>;
@@ -19,6 +23,7 @@ export class FavoriteComponent implements OnInit {
   }
 
   add(item) {
+    this.toastr.success('Added to Grocery List.', 'Success!', {});
     this.groceryList.push(item);
   }
 

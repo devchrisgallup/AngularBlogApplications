@@ -10,8 +10,10 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
+// imports
 import { FavoriteComponent } from './favorite/favorite.component';
 import { AppRoutingModule, routingComponents } from './app.routing';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 
 @NgModule({
@@ -21,12 +23,15 @@ import { AppRoutingModule, routingComponents } from './app.routing';
     FooterComponent,
     ContentComponent,
     FavoriteComponent,
+    // add to our declarations
     routingComponents
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ToastModule.forRoot(),
+    // add to our imports
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],

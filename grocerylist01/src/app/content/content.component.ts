@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastOptions } from 'ng2-toastr';
+import { VERSION } from '@angular/core';
 
 @Component({
   selector: 'app-content',
@@ -14,15 +17,15 @@ export class ContentComponent implements OnInit {
   newFavorite: string = '';
   
 
-  constructor(private af: AngularFire) {
+  constructor(private af: AngularFire, public toastr: ToastsManager,private vRef:ViewContainerRef) {
     const items$ = af.database.object('/items');
-    items$.subscribe(console.log);
+    this.toastr.setRootViewContainerRef(vRef);
+    console.log(VERSION.full);
   }
 
   ngOnInit() {
     this.items = this.af.database.list('/items');
     this.favoriteItem = this.af.database.list('/favoriteItem'); 
-    console.log(this.items);
   }
   
   add() {
@@ -35,6 +38,7 @@ export class ContentComponent implements OnInit {
   }
   
   favorite(item) {
+    this.toastr.success('You have a new Favorites Item.', 'Success!');
     this.favoriteItem.push(item);
   }
 }
