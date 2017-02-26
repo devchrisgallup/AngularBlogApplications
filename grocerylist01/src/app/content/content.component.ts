@@ -3,7 +3,6 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { ToastOptions } from 'ng2-toastr';
-import { VERSION } from '@angular/core';
 
 @Component({
   selector: 'app-content',
@@ -11,7 +10,7 @@ import { VERSION } from '@angular/core';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  items : FirebaseListObservable<any[]>;
+  items: FirebaseListObservable<any[]>;
   favoriteItem: FirebaseListObservable<any[]>;
   newItem: string = '';
   newFavorite: string = '';
@@ -20,7 +19,6 @@ export class ContentComponent implements OnInit {
   constructor(private af: AngularFire, public toastr: ToastsManager,private vRef:ViewContainerRef) {
     const items$ = af.database.object('/items');
     this.toastr.setRootViewContainerRef(vRef);
-    console.log(VERSION.full);
   }
 
   ngOnInit() {
@@ -38,7 +36,7 @@ export class ContentComponent implements OnInit {
   }
   
   favorite(item) {
-    this.toastr.success('You have a new Favorites Item.', 'Success!');
+    this.toastr.success('You have a new Favorite Item.', 'Success!');
     this.favoriteItem.push(item);
   }
 }
