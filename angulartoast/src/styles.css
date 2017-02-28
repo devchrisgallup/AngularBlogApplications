@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    background-color: #4285f2; 
+    color: #FFF; 
+}
+
+.centerText {
+    text-align: center;
+}
+
+button {
+    background-color: #FFF;
+    color: #4285f2; 
+    padding: 0.5%; 
+    border-radius: 88px; 
+    font-size: 1.3rem; 
+}
