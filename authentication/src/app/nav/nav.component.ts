@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFire } from 'angularfire2'; 
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(public af:AngularFire) { }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.af.auth.login(); 
+  }
+
+  logout() {
+    this.af.auth.logout(); 
   }
 
 }

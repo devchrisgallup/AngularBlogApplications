@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { firebaseConfig } from './../environments/firebase.config';
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,11 @@ import { ContentComponent } from './content/content.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { AppRoutingModule, routingComponents } from './app.routing';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+
+const firebaseAuthConfig = {
+  provider: AuthProviders.Google, 
+  method: AuthMethods.Popup
+};
 
 
 @NgModule({
@@ -33,7 +38,7 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     ToastModule.forRoot(),
     // add to our imports
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
