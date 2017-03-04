@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+body, html {
+    margin: 0; 
+    padding: 0; 
+    color: #FFF; 
+    background-color: #4285f4;
+}
+
+#container {
+    padding: 5% 30%; 
+}
+
+#container ul li {
+    font-size: 1.5em; 
+}
+
+@media only screen and (max-width: 480px) {
+    #container {
+        padding: 5% 10%; 
+    }
+
+    #container ul li {
+        font-size: 1.5em; 
+    }
+    
+    footer {
+        visibility: hidden;
+    }
+}
+

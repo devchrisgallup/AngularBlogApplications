@@ -1,0 +1,20 @@
+ul {
+    list-style-type: none; 
+    padding: 0;
+}
+
+button { 
+    font-size: 1em; 
+    background-color: #FFFFFF;
+    color: #707070;
+    margin: 0.5%; 
+}
+
+span { 
+    margin-left: 0.5%;
+}
+
+
+input[type="text"] {
+    width: 20%; 
+}
