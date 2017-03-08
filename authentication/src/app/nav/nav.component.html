@@ -1,6 +1,6 @@
 <nav>
   <ul>
-    <li><a routerLink="/content">Grocery List</a></li>
+    <li *ngIf="(af.auth | async)"><a routerLink="/content">Grocery List</a></li>
     <!-- 
       -added two list items log in/out
       -click handler with methods 
@@ -8,7 +8,7 @@
     -->
     <li *ngIf="!(af.auth | async)"><a (click)="login(af.auth)">Log In</a></li>
     <li *ngIf="(af.auth | async)"><a (click)="logout()">Log Out</a></li>
-    <li><a routerLink="/favorite">Favorites</a></li>
+    <li *ngIf="(af.auth | async)"><a routerLink="/favorite">Favorites</a></li>
   </ul>
 </nav>
 <router-outlet></router-outlet>
