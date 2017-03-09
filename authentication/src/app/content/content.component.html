@@ -1,8 +1,9 @@
 <div id="container">
   <h1>Grocery List</h1>
-  <input type="text" class="form-control" [(ngModel)]="newItem" (keydown.enter)="add()" placeholder="item to add"/>
-  <h1>Lists</h1>
-  <ul>
+  <input type="text" class="form-control" *ngIf="(af.auth | async)" [(ngModel)]="newItem" (keydown.enter)="add()" placeholder="item to add"/>
+  <h3 *ngIf="!(af.auth | async)">Log In to start creating your own Grocery List!</h3>
+  <h1 *ngIf="(af.auth | async)">Items</h1>
+  <ul *ngIf="(af.auth | async)">
     <li *ngFor="let item of items | async">
       <button class="btn" (click)="favorite(item.$value)">[fav]</button><button class="btn" (click)="delete(item)">[x]</button><span>{{item.$value}}</span>
     </li>
