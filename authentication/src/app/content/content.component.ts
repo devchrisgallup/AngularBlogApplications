@@ -27,10 +27,13 @@ export class ContentComponent implements OnInit {
   }
   
   add() {
-    if (this.newItem !== '') {
-      this.items.push(this.newItem);
-      this.newItem = '';
-    }
+        this.items.forEach(element => {
+          for (let i = 0; i < element.length; i++) {
+            console.log(element[i]); 
+          }
+        });
+        this.items.push(this.newItem); 
+        this.newItem = '';
   }
 
   delete(item) {
