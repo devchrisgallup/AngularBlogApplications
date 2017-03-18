@@ -8,11 +8,11 @@ import 'rxjs/Rx';
 
 @Injectable() 
 export class UserService {
-    private dataUrl: string = 'http://api.tvmaze.com/search/shows?q=dog';
+    private dataUrl: string = 'http://api.tvmaze.com/search/shows?q=';
     constructor(private http: Http) {}
     // get data
-    getData(): Observable<User[]> {
-        return this.http.get(this.dataUrl)
+    getData(item): Observable<User[]> {
+        return this.http.get(this.dataUrl + item)
         .map(res => res.json());  
     }
 }

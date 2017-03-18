@@ -17,7 +17,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getData()
+    this.service.getData('dog')
+      .subscribe(data => this.users = data);
+  }
+  
+  processData(item) {
+    this.service.getData(item)
       .subscribe(data => this.users = data);
   }
 }
