@@ -9,7 +9,9 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+    userData: string;
   title = 'Angular HTTP | Observables';
+  description = 'TVmaze API';
   users: User[]; 
 
   constructor(private service: UserService) {
