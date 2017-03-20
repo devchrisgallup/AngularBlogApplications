@@ -9,7 +9,7 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    userData: string;
+  userData: string;
   title = 'Angular HTTP | Observables';
   description = 'TVmaze API';
   users: User[]; 
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getData('dog')
+    this.service.getData('ncsi')
       .subscribe(data => this.users = data);
   }
   
