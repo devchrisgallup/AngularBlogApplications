@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="text-center">
+  <div>
+    <input class="form-control text-center" #userData (keyup.enter)="processData(userData.value); userData.value=''"  placeholder="Enter a TV series Title">
+  </div>
+  <br>
+  <br>
+  </div>
+  <div class="col-md-3 col-sm-6 text-center" *ngFor="let user of users">
+    <div *ngIf="user.show.name">Title: {{user.show.name}}<br></div>
+    <div *ngIf="!user.show.name">Title was not available.<br></div>
+    <div *ngIf="user.show.status">Still on the air: {{user.show.status}}<br></div>
+    <div *ngIf="!user.show.status">Still on air data was not available.<br></div>
+    <div *ngIf="user.show.premiered">Premired date: {{user.show.premiered}}<br></div>
+    <div *ngIf="!user.show.premiered">Premiered Date was not available.<br></div>
+    <div *ngIf="user.show.image"><a [href]="user.show.url"><img [src]="user.show.image.medium"/></a></div>
+    <div *ngIf="!user.show.image"><br>Sorry, we do not have an image for this title.</div>
+    <br>
+    <br>
+  </div>
+</div>

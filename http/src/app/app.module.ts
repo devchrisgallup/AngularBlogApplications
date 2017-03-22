@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { UserService } from './services/user.service'; 
+import { UserService } from './services/user.service';
+import { NavComponent } from './nav/nav.component';
+import { ContentComponent } from './content/content.component'; 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
