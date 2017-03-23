@@ -13,7 +13,7 @@
     <div *ngIf="!user.show.status">Still on air data was not available.<br></div>
     <div *ngIf="user.show.premiered">Premired date: {{user.show.premiered}}<br></div>
     <div *ngIf="!user.show.premiered">Premiered Date was not available.<br></div>
-    <div *ngIf="user.show.image"><a [href]="user.show.url"><img [src]="user.show.image.medium"/></a></div>
+    <div *ngIf="user.show.image"><a [href]="user.show.url"><img [src]="user.show.image.medium" [alt]="user.show.name"/></a></div>
     <div *ngIf="!user.show.image"><br>Sorry, we do not have an image for this title.</div>
     <br>
     <br>
