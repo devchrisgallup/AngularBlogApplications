@@ -23,5 +23,7 @@ export class ContentComponent implements OnInit {
   processData(item) {
     this.service.getData(item)
       .subscribe(data => this.users = data);
+    this.service.getData(item)
+      .subscribe(data => console.log(data));
   }
 }
