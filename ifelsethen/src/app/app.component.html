@@ -1,3 +1,15 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <button (click)="chageTheDay()">Change The Day</button><br>
+
+  <div *ngIf="title == true; then goodDay else badDay">
+  </div>
+
+  <ng-template #goodDay>
+    <h2>Today is going to be a Good Day!</h2>
+    <img src="./assets/happyday.jpg" alt="Dog having a good day">
+  </ng-template>
+  <ng-template #badDay>
+    <h2>I have had better days.</h2>
+    <img src="./assets/sadday.jpg" alt="Dog having a bad day">
+  </ng-template>
+</div>
