@@ -12,6 +12,8 @@
       <div *ngIf="!user.show.name">Title was not available.<br></div>
       <div *ngIf="user.show.status">Still on the air: {{user.show.status}}<br></div>
       <div *ngIf="!user.show.status">Still on air data was not available.<br></div>
+      <div *ngIf="user.show.runtime">Run Time: {{user.show.runtime}}<br></div>
+      <div *ngIf="!user.show.runtime">Run Time was not available.<br></div>
       <div *ngIf="user.show.type">Type: {{user.show.type}}<br></div>
       <div *ngIf="!user.show.type">Type was not available.<br></div>
       <div *ngIf="user.show.premiered">Premired date: {{user.show.premiered}}<br></div>
