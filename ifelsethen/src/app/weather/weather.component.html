@@ -1,5 +1,6 @@
 <button (click)="processData()">Get Weather</button>
 <div *ngIf="temp">
   <img [src]="url" alt="Weather Icon"><br>
-  Temperature:  {{temp}}&#8457;
+  Temperature:  {{temp}}&#8457;<br>
+  Wind MPH: {{wind}}
 </div>

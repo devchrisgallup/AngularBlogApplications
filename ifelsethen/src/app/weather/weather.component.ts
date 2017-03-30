@@ -12,10 +12,11 @@ import 'rxjs/Rx';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-    private dataUrl: string = 'http://api.wunderground.com/api//conditions/q/MO/Independence.json';
-    public users; 
-    public temp; 
-    public url; 
+    private dataUrl: string = 'http://api.wunderground.com/api/08946f7cb621e667/conditions/q/MO/Independence.json';
+    private users; 
+    private temp; 
+    private url; 
+    private wind; 
     constructor(private http: Http) {}
 
   ngOnInit() {
@@ -27,5 +28,6 @@ export class WeatherComponent implements OnInit {
   processData() {
     this.temp = this.users.current_observation.temp_f; 
     this.url = this.users.current_observation.icon_url;
+    this.wind = this.users.current_observation.wind_mph; 
   }
 }
