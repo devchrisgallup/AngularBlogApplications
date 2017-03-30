@@ -1,14 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-img {
-    width: 50%; 
+html, body {
+    background-color: #fd7037;
+    color: #FFF; 
 }
 
 button {
     margin: 1%; 
-    background-color: #FFF; 
+    background-color: #37a9ef;
     border-radius: 95px; 
-    padding: 2%; 
+    padding: 1%; 
     font-size: 1.5rem; 
+    color: #FFF; 
+}
+
+button:active {
+    margin: 1%; 
+    background-color: #fd7037;
+    border-radius: 28px; 
+    padding: 1%; 
+    font-size: 1.5rem; 
+    color: #FFF; 
 }
 
 .container {
