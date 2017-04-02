@@ -17,3 +17,13 @@
   <app-weather></app-weather>
 </div>
 
+
+<div class="container"> 
+  <div *ngIf="user; then logout else login">
+  </div>
+  <ng-template #logout>{{userName}}: <button (click)="log()">Log out</button></ng-template>
+  <ng-template #login>Please login: <button (click)="log()">Log In</button></ng-template>
+</div>
+
+
+

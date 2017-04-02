@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  user = true; 
+  userName = "Luke"; 
+  force = ''; 
   title = true;
 
   chageTheDay() {
@@ -13,6 +16,14 @@ export class AppComponent {
       this.title = false; 
     } else if (this.title == false) {
       this.title = true; 
+    }
+  }
+
+  log() {
+    if (this.user == true) {
+      this.user = false; 
+    } else if (this.user == false) {
+      this.user = true; 
     }
   }
 }
