@@ -1,0 +1,22 @@
+<div class="mycenter">
+  <md-input-container>
+    <input mdInput placeholder="Enter a TV Show" #movie (keyup.enter)="processData(movie.value)">
+  </md-input-container>
+</div>
+<div id="card-container">
+  <md-card class="example-card" *ngFor="let tv of tvshow">
+    <md-card-header>
+      <div md-card-avatar class="example-header-image"></div>
+      <md-card-title>{{tv.show.name}}</md-card-title>
+      <md-card-subtitle>{{tv.show.status}}</md-card-subtitle>
+    </md-card-header>
+    <div *ngIf="tv.show.image"><a [href]="tv.show.url"><img [src]="tv.show.image.medium" [alt]="tv.show.name"/></a></div>
+    <div *ngIf="!tv.show.image"><img src="./assets/notfound.jpg" alt="image not found"/></div>
+    <md-card-content>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button>LIKE</button>
+      <button md-button>SHARE</button>
+    </md-card-actions>
+  </md-card>
+</div>

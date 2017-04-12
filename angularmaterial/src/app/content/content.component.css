@@ -1,0 +1,22 @@
+img {
+  width: 100%; 
+}
+
+.example-card {
+  width: 300px;
+  margin: 0.5%; 
+}
+
+.md-card {
+  float: right; 
+}
+
+/* wrapper code */
+#card-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.mycenter {
+  text-align: center; 
+} 
