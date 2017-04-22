@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.container {
+    margin: 0 auto; 
+    width: 50%; 
+}
+
+.innercontainer {
+    text-align: center; 
+}
+
+.imgradius {
+    border-radius: 360px; 
+}
+
+.floatright {
+    
+}
