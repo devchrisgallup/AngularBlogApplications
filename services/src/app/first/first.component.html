@@ -1,6 +1,7 @@
 <div *ngIf="show">
     <h1>{{show.Title}}</h1>
-    <h3>{{show.imdbRating}}</h3>
+    <h3>Release Date: {{show.Released}}</h3>
+    <h3>IMDB Rating: {{show.imdbRating}}</h3>
         {{show.Plot}}
 </div>
 <button (click)="getShow()">Get Data</button>
