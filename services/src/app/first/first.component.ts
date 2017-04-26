@@ -11,18 +11,21 @@ import { OmdbService } from 'app/services/omdb.service';
 export class FirstComponent implements OnInit {
   // add public property here
   public show; 
+  public searchItem; 
   
   constructor(private omdbservice: OmdbService) {
     
    }
 
   ngOnInit() {
-    this.omdbservice.getData() 
+    this.omdbservice.getData('goonies') 
                     .subscribe(data => this.show = data); 
   }
 
   getShow() {
-    console.log(this.show); 
+    this.omdbservice.getData(this.searchItem) 
+                    .subscribe(data => this.show = data);
+    this.searchItem = '';  
   }
 
 }

@@ -13,8 +13,8 @@ export class OmdbService {
   }
   // get data with service 
   // use data in muiltple components
-  getData() {
-    this.dataUrl = 'http://www.omdbapi.com/?t=goonies&plot=full';
+  getData(item) {
+    this.dataUrl = 'http://www.omdbapi.com/?t=' + item + '&plot=full';
     return this.http.get(this.dataUrl)
                     .map(data => data.json());
   }

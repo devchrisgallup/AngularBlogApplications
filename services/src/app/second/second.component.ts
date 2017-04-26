@@ -15,8 +15,7 @@ export class SecondComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.omdbservice.getData()
+    this.omdbservice.getData('goonies')
                     .subscribe(data => this.show = data);
   }
-
 }

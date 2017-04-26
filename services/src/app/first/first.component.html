@@ -1,3 +1,9 @@
+<input type="text" [(ngModel)]="searchItem" (keydown.enter)="getShow()"/>
+<div class="innercontainer floatright">
+  <div *ngIf="show">
+    <img [src]="show.Poster" [alt]="show.Title" class="imgradius"/>
+  </div>
+</div>
 <div *ngIf="show">
     <h1>{{show.Title}}</h1>
     <h3>Release Date: {{show.Released}}</h3>
