@@ -1,8 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-img { 
-    width: 60%; 
+html, body {
     margin: 0; 
     padding: 0; 
+    background-color: orange; 
+    color: #FFF; 
+}
+
+img { 
+    width: 60%; 
+    background-color: #FFF;  
+    padding: 2%; 
+}
+
+input[type="text"] {
+    padding: 2%; 
+    margin: 5%; 
+    border-radius: 15px; 
+    border-width: thick; 
+    border-color: #FFF #FFF #FFF #FFF;
+    background-color: #FFF; 
+}
+
+input[type="text"]:active {
+    padding: 3%; 
+    margin: 4%; 
 }
 
 .container {

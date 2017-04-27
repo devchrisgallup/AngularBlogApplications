@@ -1,5 +1,6 @@
-<input type="text" [(ngModel)]="searchItem" (keydown.enter)="getShow()"/>
+
 <div class="innercontainer floatright">
+  <input type="text" [(ngModel)]="searchItem" (keydown.enter)="getShow()" placeholder="Enter a Movie"/>
   <div *ngIf="show">
     <img [src]="show.Poster" [alt]="show.Title" class="imgradius"/>
   </div>
