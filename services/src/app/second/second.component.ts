@@ -18,4 +18,8 @@ export class SecondComponent implements OnInit {
     this.omdbservice.getData('goonies')
                     .subscribe(data => this.show = data);
   }
+
+  showData() {
+    console.log(this.show); 
+  }
 }
