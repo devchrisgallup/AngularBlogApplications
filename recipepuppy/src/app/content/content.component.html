@@ -1,1 +1,8 @@
-<button (click)="getData()">Get Json</button>
+<input type="text" (keydown.enter)="getData()" [(ngModel)]="searchItem" placeholder="Enter a Ingredient"/>
+<div *ngIf="recipe">
+    <div *ngFor="let food of recipe"> 
+        <h2>{{food.title}}</h2>
+        <h4>{{food.ingredients}}</h4>
+        <a [href]="food.href"><img [src]="food.thumbnail"/></a>
+    </div>
+</div>

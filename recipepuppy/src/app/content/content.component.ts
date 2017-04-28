@@ -11,17 +11,21 @@ import { RecipepuppyService } from 'app/services/recipepuppy.service';
 export class ContentComponent implements OnInit {
   // add public property here
   public recipe; 
-  public searchItem; 
+  public searchItem;
+  public foodArray;  
   
   constructor(private recipepuppyservice: RecipepuppyService) {
     
    }
 
   ngOnInit() {
-    this.recipepuppyservice.getData('onions') 
-                    .subscribe(data => this.recipe = data); 
+    this.recipepuppyservice.getData(this.searchItem) 
+                    .subscribe(data => this.recipe = data.results); 
   }
+
   getData() {
-    console.log(this.recipe); 
+    this.recipepuppyservice.getData(this.searchItem) 
+                    .subscribe(data => this.recipe = data.results);
+    this.searchItem = ''; 
   }
 }
