@@ -1,0 +1,41 @@
+a {
+    text-decoration: none; 
+    color: #FFF; 
+}
+
+ul {
+    list-style-type: none; 
+    padding: 0;
+}
+
+button { 
+    display: inline-block; 
+    font-size: 1em; 
+    background-color: #FFFFFF;
+    color: #707070;
+    margin: 3% 0.5%; 
+}
+
+span { 
+    margin-left: 0.5%;
+}
+
+.favorite {
+    font-size: .5em;
+    margin-top: 0; 
+}
+
+input[type="text"] {
+    margin-top: 1%; 
+}
+
+img {
+    margin: 0 auto; 
+    width: 20%; 
+    padding: 1%; 
+    background-color: #FFF; 
+}
+
+h4 {
+    font-style: italic; 
+}

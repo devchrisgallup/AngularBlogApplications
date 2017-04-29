@@ -26,6 +26,11 @@ export class ContentComponent implements OnInit {
   getData() {
     this.recipepuppyservice.getData(this.searchItem) 
                     .subscribe(data => this.recipe = data.results);
+    console.log(this.recipe); 
     this.searchItem = ''; 
+  }
+
+  add(item) {
+    console.log(item); 
   }
 }
