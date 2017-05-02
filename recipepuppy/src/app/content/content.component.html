@@ -2,11 +2,9 @@
       <h1>Go on, find your Dinner!</h1>
     <h4><a href="http://www.recipepuppy.com">Powered by, Recipe Puppy</a></h4>
     <input type="text" class="form-control center" (keydown.enter)="getData()" [(ngModel)]="searchItem" placeholder="Enter a Ingredient"/>
-        <div *ngIf="recipe">
-            <div *ngFor="let food of recipe"> 
-                <h2>{{food.title}}</h2>
-                <button class="btn" (click)="add(food.ingredients)">[add to list]</button><span>{{food.ingredients}}</span><br>
-                <a [href]="food.href"><img [src]="food.thumbnail"/></a>
-            </div>
-        </div>
+    <div *ngFor="let food of recipe"> 
+        <h2>{{food.title}}</h2>
+        <button class="btn" (click)="add(food.ingredients)">[add to list]</button><span>{{food.ingredients}}</span><br>
+        <a [href]="food.href"><img [src]="food.thumbnail"/></a>
+    </div>
 </div>
