@@ -10,6 +10,7 @@ export class ContentComponent implements OnInit {
   public lat; 
   public long; 
   public changed = 0; 
+  public passedStopSign = 'Not passed stop sign.'  
 
   constructor() { }
 
@@ -22,6 +23,8 @@ export class ContentComponent implements OnInit {
   setPosition(position) {
     this.lat = position.coords.latitude; 
     this.long = position.coords.longitude; 
-    this.changed++;  
+    if (this.lat > 39.0680940){
+      this.passedStopSign = 'Passed stop sign.'; 
+    }
   }
 }
