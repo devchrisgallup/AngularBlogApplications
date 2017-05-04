@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Components that we want to route
 import { FavoriteComponent } from './favorite/favorite.component';
 import { ContentComponent } from './content/content.component';
+import { IngredientComponent } from './ingredient/ingredient.component';
 
 // Routes array
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
 
     { path: 'content', component: ContentComponent },
     { path: 'favorite', component: FavoriteComponent },
+    { path: 'ingredient', component: IngredientComponent },
 ];
 
 @NgModule({
@@ -21,4 +23,4 @@ const routes: Routes = [
 
 export class AppRoutingModule {}
 
-export const routingComponents = [ ContentComponent, FavoriteComponent ]
+export const routingComponents = [ ContentComponent, FavoriteComponent, IngredientComponent ]

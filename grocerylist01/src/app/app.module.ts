@@ -14,6 +14,8 @@ import { ContentComponent } from './content/content.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { AppRoutingModule, routingComponents } from './app.routing';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { IngredientComponent } from './ingredient/ingredient.component';
+import { RecipepuppyService } from 'app/services/recipepuppy.service'; 
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     ContentComponent,
     FavoriteComponent,
     // add to our declarations
-    routingComponents
+    routingComponents,
+    IngredientComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,9 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [
+    RecipepuppyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
