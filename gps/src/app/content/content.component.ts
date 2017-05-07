@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class ContentComponent implements OnInit {
   public items: FirebaseListObservable<any[]>;
+  public latObs: FirebaseListObservable<any[]>;
+  public longObs: FirebaseListObservable<any[]>;
   public lat; 
   public long; 
   public changed = 0; 
@@ -21,6 +23,8 @@ export class ContentComponent implements OnInit {
         navigator.geolocation.watchPosition(this.setPosition.bind(this));
       }
     this.items = this.af.list('/items');
+    this.latObs = this.af.list('/lat');
+    this.longObs = this.af.list('/long'); 
   }
 
   setPosition(position) {
@@ -32,10 +36,15 @@ export class ContentComponent implements OnInit {
   }
 
   processData() {
-    this.items.push(this.lat); 
+    this.latObs.push(this.lat);
+    this.longObs.push(this.long); 
   }
 
-  delete(item) {
-    this.items.remove(item)
+  deleteLat(item) {
+    this.latObs.remove(item);
+  }
+
+  deleteLong(item) {
+    this.longObs.remove(item);
   }
 }

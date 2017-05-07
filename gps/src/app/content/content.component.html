@@ -1,10 +1,13 @@
 {{lat}} {{long}} {{changed}} <br>
 {{passedStopSign}}
 
-  <ul>
-    <li *ngFor="let item of items | async">
-      <button class="btn" (click)="delete(item)">[x]</button><span>{{item.$value}}</span>
-    </li>
-  </ul>
+<ul>
+  <li *ngFor="let item of latObs | async">
+    <button class="btn" (click)="deleteLat(item)">[x]</button><span>{{item.$value}}</span>
+  </li>
+  <li *ngFor="let itemLong of longObs | async">
+    <button class="btn" (click)="deleteLong(itemLong)">[x]</button><span>{{itemLong.$value}}</span>
+  </li>
+</ul>
   
-  <button (click)="processData()">Set Location</button>
+<button (click)="processData()">Set Location</button>
