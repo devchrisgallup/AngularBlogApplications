@@ -13,23 +13,25 @@ import { RecipepuppyService } from 'app/services/recipepuppy.service';
 export class IngredientComponent implements OnInit {
   // add public property here
   public items: FirebaseListObservable<any[]>;
+  public lastSearch: FirebaseListObservable<any[]>;
   public recipe; 
   public searchItem;
   public foodArray;  
   
   constructor(private recipepuppyservice: RecipepuppyService, private af: AngularFire) {
-    
    }
 
   ngOnInit() {
-    this.recipepuppyservice.getData('cheese') 
-                    .subscribe(data => this.recipe = data.results); 
+    this.searchItem = localStorage.getItem('lastSearch'); 
     this.items = this.af.database.list('/items');
+    this.recipepuppyservice.getData(this.searchItem) 
+                    .subscribe(data => this.recipe = data.results); 
   }
 
   getData() {
     this.recipepuppyservice.getData(this.searchItem) 
                     .subscribe(data => this.recipe = data.results);
+    localStorage.setItem('lastSearch', this.searchItem); 
     this.searchItem = ''; 
   }
 

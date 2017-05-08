@@ -27,8 +27,7 @@ export class ContentComponent implements OnInit {
   }
   
   add() {
-    this.items.push(this.newItem);
-    this.newItem = '';
+    this.items.push(this.newItem); 
   }
 
   delete(item) {
