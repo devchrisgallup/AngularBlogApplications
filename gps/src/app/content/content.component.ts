@@ -37,7 +37,7 @@ export class ContentComponent implements OnInit {
 
   processData() {
     this.latObs.push(this.lat);
-    this.longObs.push(this.long); 
+    this.longObs.push(this.long);  
   }
 
   deleteLat(item) {

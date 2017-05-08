@@ -1,13 +1,12 @@
-{{lat}} {{long}} {{changed}} <br>
-{{passedStopSign}}
+<span *ngFor="let item of latObs | async" class="containerLat">
+  <button class="btn" (click)="deleteLat(item)">[x]</button>
+  <span>Latitude: {{item.$value | number : '1.2-2'}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</span>
+<br>
+<span *ngFor="let item of longObs | async" class="containerLong">
+  <button class="btn" (click)="deleteLong(item)">[x]</button>
+  <span>Longitude: {{item.$value | number : '1.2-2'}}&nbsp;</span>
+</span>
+<br>
 
-<ul>
-  <li *ngFor="let item of latObs | async">
-    <button class="btn" (click)="deleteLat(item)">[x]</button><span>{{item.$value}}</span>
-  </li>
-  <li *ngFor="let itemLong of longObs | async">
-    <button class="btn" (click)="deleteLong(itemLong)">[x]</button><span>{{itemLong.$value}}</span>
-  </li>
-</ul>
-  
 <button (click)="processData()">Set Location</button>
