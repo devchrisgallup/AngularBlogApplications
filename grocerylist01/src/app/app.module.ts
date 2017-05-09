@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+// if Angular 4 upgrade
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from './../environments/firebase.config';
@@ -18,6 +20,7 @@ import { IngredientComponent } from './ingredient/ingredient.component';
 import { RecipepuppyService } from 'app/services/recipepuppy.service'; 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,10 +30,11 @@ import { RecipepuppyService } from 'app/services/recipepuppy.service';
     FavoriteComponent,
     // add to our declarations
     routingComponents,
-    IngredientComponent
+    IngredientComponent,
   ],
   imports: [
     BrowserModule,
+    // BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     ToastModule.forRoot(),

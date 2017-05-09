@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs';
 // imports go here
 import { Http } from '@angular/http';
 import { RecipepuppyService } from 'app/services/recipepuppy.service'; 
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastOptions } from 'ng2-toastr';
 
 @Component({
   selector: 'app-ingredient',
@@ -18,8 +20,9 @@ export class IngredientComponent implements OnInit {
   public searchItem;
   public foodArray;  
   
-  constructor(private recipepuppyservice: RecipepuppyService, private af: AngularFire) {
-   }
+  constructor(private recipepuppyservice: RecipepuppyService, private af: AngularFire,public toastr: ToastsManager,private vRef:ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vRef);
+  }
 
   ngOnInit() {
     this.searchItem = localStorage.getItem('lastSearch'); 
@@ -39,6 +42,7 @@ export class IngredientComponent implements OnInit {
     let item = ingredients.split(','); 
     for (let i = 0; i < item.length; i++) {
       this.items.push(item[i]); 
-    } 
+    }
+    this.toastr.success('You have added Item(s) to Grocery List.', 'Success!'); 
   }
 }
