@@ -1,12 +1,12 @@
 <span *ngFor="let item of latObs | async" class="containerLat">
   <button class="btn" (click)="deleteLat(item)">[x]</button>
-  <span>Latitude: {{item.$value | number : '1.2-2'}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <span>Latitude: {{ item.lat | json}} Longitude: {{ item.long | json}}</span>
 </span>
 <br>
-<span *ngFor="let item of longObs | async" class="containerLong">
+<!--<span *ngFor="let item of longObs | async" class="containerLong">
   <button class="btn" (click)="deleteLong(item)">[x]</button>
   <span>Longitude: {{item.$value | number : '1.2-2'}}&nbsp;</span>
 </span>
-<br>
+<br>-->
 
 <button (click)="processData()">Set Location</button>

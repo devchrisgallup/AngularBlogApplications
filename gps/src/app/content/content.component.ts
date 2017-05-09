@@ -14,7 +14,8 @@ export class ContentComponent implements OnInit {
   public lat; 
   public long; 
   public changed = 0; 
-  public passedStopSign = 'Not passed stop sign.'  
+  public passedStopSign = 'Not passed stop sign.'; 
+  public bigQ; 
 
   constructor(private af: AngularFireDatabase) { }
 
@@ -23,8 +24,8 @@ export class ContentComponent implements OnInit {
         navigator.geolocation.watchPosition(this.setPosition.bind(this));
       }
     this.items = this.af.list('/items');
-    this.latObs = this.af.list('/lat');
-    this.longObs = this.af.list('/long'); 
+    this.latObs = this.af.list('/location');
+    this.longObs = this.af.list('/long');  
   }
 
   setPosition(position) {
@@ -35,9 +36,12 @@ export class ContentComponent implements OnInit {
     }
   }
 
-  processData() {
-    this.latObs.push(this.lat);
-    this.longObs.push(this.long);  
+  processData() { 
+    let item = {
+      lat:this.lat, 
+      long:this.long
+    }; 
+    this.latObs.push(item);
   }
 
   deleteLat(item) {
