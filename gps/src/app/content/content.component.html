@@ -1,12 +1,9 @@
-<span *ngFor="let item of latObs | async" class="containerLat">
-  <button class="btn" (click)="deleteLat(item)">[x]</button>
-  <span>Latitude: {{ item.lat | json}} Longitude: {{ item.long | json}}</span>
-</span>
-<br>
-<!--<span *ngFor="let item of longObs | async" class="containerLong">
-  <button class="btn" (click)="deleteLong(item)">[x]</button>
-  <span>Longitude: {{item.$value | number : '1.2-2'}}&nbsp;</span>
-</span>
-<br>-->
+<div *ngFor="let item of locationFirebase | async" class="setlocation">
+  <button class="btn" (click)="deleteLat(item)">[x]</button><button class="btn" (click)="setMap(item)">[map]</button>
+  <span>Name: {{item.name | json}} Latitude: {{ item.lat | json}} Longitude: {{ item.long | json}}</span>
+</div>
 
-<button (click)="processData()">Set Location</button>
+<input type="text" [(ngModel)]="locationName" (keydown.enter)="setLocation()" placeholder="Location Name">
+
+<iframe [src]="url | safe" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+

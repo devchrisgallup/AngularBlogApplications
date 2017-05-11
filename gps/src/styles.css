@@ -2,3 +2,9 @@
 ul {
     list-style-type: none; 
 }
+
+.setlocation {
+    background-color: #ffffff;
+    margin: 1%; 
+    display: block; 
+}

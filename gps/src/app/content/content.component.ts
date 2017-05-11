@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser';
+
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) {}
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+} 
 
 @Component({
   selector: 'app-content',
@@ -8,14 +18,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  public items: FirebaseListObservable<any[]>;
-  public latObs: FirebaseListObservable<any[]>;
-  public longObs: FirebaseListObservable<any[]>;
+  public locationFirebase: FirebaseListObservable<any[]>;
   public lat; 
   public long; 
-  public changed = 0; 
+  public url = "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d12391.926345121707!2d-94.460829!3d39.0613338!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1494528860800"
+  public googleMapString = ''; 
   public passedStopSign = 'Not passed stop sign.'; 
-  public bigQ; 
+  public locationName;  
 
   constructor(private af: AngularFireDatabase) { }
 
@@ -23,32 +32,28 @@ export class ContentComponent implements OnInit {
     if(navigator.geolocation){
         navigator.geolocation.watchPosition(this.setPosition.bind(this));
       }
-    this.items = this.af.list('/items');
-    this.latObs = this.af.list('/location');
-    this.longObs = this.af.list('/long');  
+    this.locationFirebase = this.af.list('/location');
   }
 
   setPosition(position) {
-    this.lat = position.coords.latitude; 
-    this.long = position.coords.longitude; 
+    this.lat = parseFloat(position.coords.latitude).toFixed(6); 
+    this.long = parseFloat(position.coords.longitude).toFixed(6); 
     if (this.lat > 39.0680940){
       this.passedStopSign = 'Passed stop sign.'; 
     }
   }
 
-  processData() { 
+  setLocation() {
     let item = {
       lat:this.lat, 
-      long:this.long
+      long:this.long,
+      name:this.locationName
     }; 
-    this.latObs.push(item);
+    this.locationFirebase.push(item);
+    this.locationName = ''; 
   }
 
   deleteLat(item) {
-    this.latObs.remove(item);
-  }
-
-  deleteLong(item) {
-    this.longObs.remove(item);
+    this.locationFirebase.remove(item);
   }
 }
