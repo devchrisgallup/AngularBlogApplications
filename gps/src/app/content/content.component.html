@@ -1,9 +1,15 @@
-<div *ngFor="let item of locationFirebase | async" class="setlocation">
-  <button class="btn" (click)="deleteLat(item)">[x]</button><button class="btn" (click)="setMap(item)">[map]</button>
-  <span>Name: {{item.name | json}} Latitude: {{ item.lat | json}} Longitude: {{ item.long | json}}</span>
+<div class="map">
+  <iframe [src]="url | safe" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
 
-<input type="text" [(ngModel)]="locationName" (keydown.enter)="setLocation()" placeholder="Location Name">
+<div class="userlist">
+  <div *ngFor="let item of locationFirebase | async" class="setlocation">
+    <button class="btn" (click)="deleteLat(item)">[x]</button><button class="btn" (click)="setMap(item)">[map]</button>
+    <span>Name: {{item.name | json}} Latitude: {{ item.lat | json}} Longitude: {{ item.long | json}}</span>
+  </div>
 
-<iframe [src]="url | safe" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <input type="text" [(ngModel)]="locationName" (keydown.enter)="setLocation()" placeholder="Location Name">
+</div>
+
+
 

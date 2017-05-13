@@ -1,10 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+    margin: 0; 
+    padding: 0; 
+    background-color: #4285f4;
+}
+
 ul {
     list-style-type: none; 
 }
 
-.setlocation {
+button {
     background-color: #ffffff;
-    margin: 1%; 
+    padding: 0.5%; 
+    border-radius: 220px; 
+}
+
+input[type="text"] {
+    padding: 0.5%;
+    border-radius: 220px; 
+}
+
+.setlocation {
+    margin: 0 1% 1% 0%;  
     display: block; 
+    color: #ffffff; 
+    font-size: 1.1rem; 
 }
