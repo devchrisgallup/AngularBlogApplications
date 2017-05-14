@@ -36,8 +36,8 @@ export class ContentComponent implements OnInit {
   }
 
   setPosition(position) {
-    this.lat = parseFloat(position.coords.latitude).toFixed(6); 
-    this.long = parseFloat(position.coords.longitude).toFixed(6); 
+    this.lat = parseFloat(position.coords.latitude).toFixed(4); 
+    this.long = parseFloat(position.coords.longitude).toFixed(4); 
     if (this.lat > 39.0680940){
       this.passedStopSign = 'Passed stop sign.'; 
     }
@@ -55,5 +55,9 @@ export class ContentComponent implements OnInit {
 
   deleteLat(item) {
     this.locationFirebase.remove(item);
+  }
+
+  setMap(item) {
+    this.url = 'https://www.google.com/maps/embed/v1/MODE?key=AIzaSyACuwY2-jSATWYx5olZCe7Ta-SnsrYZljI&center=' + item.lat + ',' + item.long;
   }
 }
