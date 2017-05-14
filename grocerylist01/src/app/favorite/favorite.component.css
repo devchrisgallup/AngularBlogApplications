@@ -8,6 +8,13 @@ button {
     background-color: #FFFFFF;
     color: #707070;
     margin: 0.5%; 
+    border-color: #707070;
+    border-width: 4px; 
+}
+
+button:active { 
+    background-color: #4285f4;
+    color: #ffffff; 
 }
 
 span { 
