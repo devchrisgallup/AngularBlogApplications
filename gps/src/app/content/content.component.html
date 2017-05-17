@@ -5,7 +5,7 @@
 <div class="userlist">
   <div *ngFor="let item of locationFirebase | async" class="setlocation">
     <button class="btn" (click)="deleteLat(item)">[x]</button><button class="btn" (click)="setMap(item)">[map]</button>
-    <span>Name: {{item.name | json}} Latitude: {{ item.lat | json}} Longitude: {{ item.long | json}}</span>
+    <span>Name: {{item.name }} Latitude: {{ item.lat }} Longitude: {{ item.long }}</span>
   </div>
 
   <input type="text" [(ngModel)]="locationName" (keydown.enter)="setLocation()" placeholder="Location Name">
