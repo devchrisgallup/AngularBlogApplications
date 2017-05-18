@@ -1,0 +1,5 @@
+<!-- set animation on element
+     mouseover and mouseleave changes which state the animation is in -->
+<h1 [@homeAnim]="state" (mouseover)="stateAnim()" (mouseleave)="stateAnim()" (click)="processData()">
+  {{title}}
+</h1>
