@@ -28,20 +28,28 @@ export class IngredientComponent implements OnInit {
     this.searchItem = localStorage.getItem('lastSearch'); 
     this.items = this.af.database.list('/items');
     this.recipepuppyservice.getData(this.searchItem) 
-                    .subscribe(data => this.recipe = data.results); 
+                    .subscribe(data => this.recipe = data.results);
   }
 
   getData() {
     this.recipepuppyservice.getData(this.searchItem) 
                     .subscribe(data => this.recipe = data.results);
     localStorage.setItem('lastSearch', this.searchItem); 
-    this.searchItem = ''; 
+    this.searchItem = '';  
   }
 
   add(ingredients) {
     let item = ingredients.split(','); 
+    let uppercase; 
+    // uppercase first letter 
     for (let i = 0; i < item.length; i++) {
-      this.items.push(item[i]); 
+      uppercase = item[i]; 
+      if (uppercase.charAt(0) == ' ') {
+        uppercase = uppercase.charAt(1).toUpperCase() + uppercase.slice(2);
+      } else {
+        uppercase = uppercase.charAt(0).toUpperCase() + uppercase.slice(1);
+      }
+      this.items.push(uppercase); 
     }
     this.toastr.success('You have added Item(s) to Grocery List.', 'Success!'); 
   }

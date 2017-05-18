@@ -14,6 +14,7 @@ export class ContentComponent implements OnInit {
   favoriteItem: FirebaseListObservable<any[]>;
   newItem: string = '';
   newFavorite: string = '';
+  counter: number = 1; 
   
 
   constructor(private af: AngularFire, public toastr: ToastsManager,private vRef:ViewContainerRef) {
