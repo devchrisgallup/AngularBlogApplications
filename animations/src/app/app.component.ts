@@ -25,6 +25,7 @@ export class AppComponent {
   public title = 'Hover Over Me';
   // change attribute value of animation
   public state: string = 'small'; 
+  public clickCount: number = 0; 
 
   stateAnim() {
     // ternary operator to
@@ -33,6 +34,7 @@ export class AppComponent {
   }
 
   processData() {
+    this.clickCount++; 
     this.title = 'You have clicked me '
   }
 }

@@ -1,5 +1,5 @@
 <!-- set animation on element
      mouseover and mouseleave changes which state the animation is in -->
 <h1 [@homeAnim]="state" (mouseover)="stateAnim()" (mouseleave)="stateAnim()" (click)="processData()">
-  {{title}}
+  {{title}}<span *ngIf="clickCount == 1">{{clickCount}} Time</span><span *ngIf="clickCount > 1">{{clickCount}} Times</span>
 </h1>
