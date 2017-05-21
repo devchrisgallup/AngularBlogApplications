@@ -11,10 +11,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger('homeAnim', [
       // states to switch between
       state('small', style({
-        transform: 'scale(1)'
+        transform: 'scale(1)',
+        backgroundColor: 'blue',
+        color: 'red'
       })),
       state('large', style({
-        transform: 'scale(1.5)'
+        transform: 'scale(1.5)',
+        color: 'blue'
       })),
       // Direction, animate with druation and easing type
       transition('small <=> large', animate('300ms ease-in')),
