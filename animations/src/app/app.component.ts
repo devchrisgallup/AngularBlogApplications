@@ -13,11 +13,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       state('small', style({
         transform: 'scale(1)',
         backgroundColor: 'blue',
-        color: 'red'
       })),
       state('large', style({
-        transform: 'scale(1.5)',
-        color: 'blue'
+        transform: 'scale(1.2)',
       })),
       // Direction, animate with druation and easing type
       transition('small <=> large', animate('300ms ease-in')),
@@ -27,7 +25,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         transform: 'scale(1)',
       }])),
       state('large', style([{
-        transform: 'scale(1.5)',
+        transform: 'scale3d(2.5, 1.2, 0.3)',
+        backgroundColor: '#00FF00', 
       }])),
       transition('small <=> large', animate('500ms ease-in')),
     ])
@@ -35,7 +34,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class AppComponent {
   public title = 'Hover Over Me';
-  public otherTitle = 'Hover Some More'
+  public otherTitle = 'Make Your...'
   // change attribute value of animation
   public state: string = 'small'; 
   public otherState: string = 'small'; 
@@ -49,6 +48,11 @@ export class AppComponent {
 
   otherAnim() {
     this.otherState = (this.otherState === 'small' ? 'large' : 'small');
+    if (this.otherState === 'small') {
+      this.otherTitle = 'Make Your...'; 
+    } else {
+      this.otherTitle = '...Money Strech!';
+    }
   }
 
   processData() {
