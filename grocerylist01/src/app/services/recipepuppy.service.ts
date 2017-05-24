@@ -13,7 +13,7 @@ export class RecipepuppyService {
   // get data with service 
   // use data in muiltple components
   getData(item) {
-    this.dataUrl = 'http://chrisgalluptest.info/food/food.php?food=' + item;
+    this.dataUrl = 'https://chrisgalluptest.info/food/food.php?food=' + item;
     return this.http.get(this.dataUrl)
                     .map(data => data.json());
   }
