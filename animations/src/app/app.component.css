@@ -15,3 +15,22 @@ h2 {
     text-align: center;
     align-content: center;
 }
+
+h3 {
+    text-align: center; 
+    color: orangered; 
+}
+
+button {
+    background-color: lightgreen; 
+    padding: 1% 0 1% 0%; 
+    color: #ffffff; 
+    width: 400px; 
+    margin: 0 auto; 
+    text-align: center; 
+    font-size: 24px; 
+}
+
+.center {
+    text-align: center; 
+}

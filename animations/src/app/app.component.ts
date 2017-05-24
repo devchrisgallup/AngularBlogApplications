@@ -29,6 +29,16 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         backgroundColor: '#00FF00', 
       }])),
       transition('small <=> large', animate('500ms ease-in')),
+    ]),
+    trigger('buttonAnim', [
+      state('small', style([{
+        transform: 'scale(1)',
+      }])),
+      state('large', style([{
+        transform: 'rotateY(150deg)',
+        backgroundColor: '#00FF00', 
+      }])),
+      transition('small <=> large', animate('500ms ease-in')),
     ])
   ]
 })
@@ -39,6 +49,7 @@ export class AppComponent {
   public state: string = 'small'; 
   public otherState: string = 'small'; 
   public clickCount: number = 0; 
+  public buttonstate: string = 'small';
 
   stateAnim() {
     // ternary operator to
@@ -53,6 +64,10 @@ export class AppComponent {
     } else {
       this.otherTitle = '...Money Strech!';
     }
+  }
+
+  buttonAnim() {
+    this.buttonstate = (this.buttonstate === 'small' ? 'large' : 'small');
   }
 
   processData() {
