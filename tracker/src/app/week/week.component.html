@@ -1,0 +1,3 @@
+<div *ngFor="let item of days | async">
+  <button (click)="add(item.$value)">+</button><button (click)="minus(item.$value)">-</button><span>{{item.$value}}</span>
+</div>  
