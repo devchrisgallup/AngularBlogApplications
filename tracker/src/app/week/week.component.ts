@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-week',
@@ -9,7 +9,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 export class WeekComponent implements OnInit {
   // database list items
   public days: FirebaseListObservable<any[]>;
-  public monday: FirebaseListObservable<any[]>;
+  public monday: FirebaseObjectObservable<any[]>;
   public tuesday: FirebaseListObservable<any[]>;
   public wednesday: FirebaseListObservable<any[]>;
   public thrusday: FirebaseListObservable<any[]>;
@@ -17,28 +17,38 @@ export class WeekComponent implements OnInit {
   public saturday: FirebaseListObservable<any[]>;
   public sunday: FirebaseListObservable<any[]>;
 
-  constructor(private af: AngularFireDatabase) { }
+  public mondayString: string; 
+
+  public sub;
+
+  constructor(private af: AngularFireDatabase) {
+      this.monday = this.af.object('/days',{ preserveSnapshot: true});
+      this.days = this.af.list('/days');
+   }
 
   ngOnInit() {
-    this.monday = this.af.list('/monday');
-    this.tuesday = this.af.list('/monday');
-    this.wednesday = this.af.list('/monday');
-    this.thrusday = this.af.list('/monday');
-    this.friday = this.af.list('/monday');
-    this.saturday = this.af.list('/monday');
-    this.sunday = this.af.list('/monday');
-    this.days = this.af.list('/days');
   }
 
-  add(item) {
+  add() {
     let last; 
-    if (item == 'Monday') {
-      this.monday.push(last);    
-    }
-
+    this.sub = this.monday.subscribe(snapshots => {
+      snapshots.forEach(snapshot => {
+        last = snapshot.val() + 1;  
+        this.monday.set({count:last}); 
+        this.sub.unsubscribe(); 
+      });
+    });
   }
 
-  minus(item) {
-    console.log(item); 
+  minus() {
+    let last; 
+    this.sub = this.monday.subscribe(snapshots => {
+      snapshots.forEach(snapshot => {
+        last = snapshot.val() - 1;  
+        this.monday.set({day:last});
+        this.mondayString = last;  
+        this.sub.unsubscribe(); 
+      });
+    });
   }
 }
