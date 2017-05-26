@@ -8,22 +8,14 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 })
 export class WeekComponent implements OnInit {
   // database list items
-  public days: FirebaseListObservable<any[]>;
-  public monday: FirebaseObjectObservable<any[]>;
-  public tuesday: FirebaseListObservable<any[]>;
-  public wednesday: FirebaseListObservable<any[]>;
-  public thrusday: FirebaseListObservable<any[]>;
-  public friday: FirebaseListObservable<any[]>;
-  public saturday: FirebaseListObservable<any[]>;
-  public sunday: FirebaseListObservable<any[]>;
-
-  public mondayString: string; 
+  public list: FirebaseListObservable<any[]>;
+  public tracker: FirebaseObjectObservable<any[]>;
 
   public sub;
 
   constructor(private af: AngularFireDatabase) {
-      this.monday = this.af.object('/days',{ preserveSnapshot: true});
-      this.days = this.af.list('/days');
+      this.tracker = this.af.object('/days',{ preserveSnapshot: true});
+      this.list = this.af.list('/days');
    }
 
   ngOnInit() {
@@ -31,10 +23,10 @@ export class WeekComponent implements OnInit {
 
   add() {
     let last; 
-    this.sub = this.monday.subscribe(snapshots => {
+    this.sub = this.tracker.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
         last = snapshot.val() + 1;  
-        this.monday.set({count:last}); 
+        this.tracker.set({day:last}); 
         this.sub.unsubscribe(); 
       });
     });
@@ -42,11 +34,10 @@ export class WeekComponent implements OnInit {
 
   minus() {
     let last; 
-    this.sub = this.monday.subscribe(snapshots => {
+    this.sub = this.tracker.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
         last = snapshot.val() - 1;  
-        this.monday.set({day:last});
-        this.mondayString = last;  
+        this.tracker.set({day:last}); 
         this.sub.unsubscribe(); 
       });
     });

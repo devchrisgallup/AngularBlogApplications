@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+    margin: 0; 
+    padding: 0; 
+    background-color: dodgerblue;
+    color: #ffffff; 
+}
+
+.greenbutton {
+    margin: 0.07%; 
+    width: 25px; 
+    border-radius: 25px;
+    background-color: green; 
+    border: 3px solid #ffffff; 
+}
+
+.redbutton {
+    margin: 0.07%; 
+    width: 25px; 
+    border-radius: 25px;
+    background-color: red;
+    border: 3px solid #ffffff;  
+}
+
+button:active {
+    background-color: #ffffff;
+    border: 3px solid orangered;
+}
+
+.center {
+    text-align: center; 
+}
+
+.fontlistitem {
+    font-size: 20px; 
+}
