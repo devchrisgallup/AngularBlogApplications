@@ -7,7 +7,7 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
   styleUrls: ['./week.component.css']
 })
 export class WeekComponent implements OnInit {
-  // database list items
+  // database items
   public list: FirebaseListObservable<any[]>;
   public tracker: FirebaseObjectObservable<any[]>;
 

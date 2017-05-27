@@ -34,3 +34,7 @@ button:active {
 .fontlistitem {
     font-size: 20px; 
 }
+
+.topmargin {
+    margin-top: 2%; 
+}

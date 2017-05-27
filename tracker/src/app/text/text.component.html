@@ -1,0 +1,9 @@
+<div class="center topmargin">
+  <input type="text" (keydown.enter)="addtext()" [(ngModel)]="textstring"/>
+</div>
+
+<div class="center content topmargin colorblack">
+  <div *ngFor="let item of list | async">
+    {{item.$value}}
+  <div>
+</div>

@@ -10,11 +10,13 @@ import { WeekComponent } from './week/week.component';
 import { AngularFireDatabaseModule, AngularFireDatabaseProvider } from 'angularfire2/database';
 import { AngularFireModule } from "angularfire2/angularfire2";
 import { firebaseConfig } from './../environments/firebase.config';
+import { TextComponent } from './text/text.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeekComponent
+    WeekComponent,
+    TextComponent
   ],
   imports: [
     BrowserModule,
