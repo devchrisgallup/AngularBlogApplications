@@ -2,7 +2,11 @@
   <input type="text" (keydown.enter)="addtext()" [(ngModel)]="textstring"/>
 </div>
 
-<div class="center content topmargin colorblack">
+<div class="center">
+  <button (click)="cleartext()" class="clearbutton">Clear</button>
+</div>
+
+<div class="center content topmargin colorblack" *ngIf="textbool">
   <div *ngFor="let item of list | async">
     {{item.$value}}
   <div>

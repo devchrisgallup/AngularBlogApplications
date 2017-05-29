@@ -14,3 +14,17 @@
 .colorblack {
     color: #000000; 
 }
+
+.clearbutton {
+    margin: 0.5%; 
+    margin-bottom: -0.5%; 
+    width: 100px; 
+    border-radius: 25px;
+    background-color: red;
+    border: 3px solid #ffffff;     
+}
+
+button:active {
+    background-color: #ffffff;
+    border: 3px solid orangered;
+}
