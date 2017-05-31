@@ -8,27 +8,33 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 })
 export class TextComponent implements OnInit {
   // database list items
-  public list: FirebaseListObservable<any[]>;
+  public name: FirebaseListObservable<any[]>;
+  public field: FirebaseListObservable<any[]>;
   public textstring:string; 
+  public namestring:string;
   public textbool: boolean; 
 
   constructor(private af: AngularFireDatabase) {
-    this.list = this.af.list('/text');
+    this.name = this.af.list('/name');
    }
 
   ngOnInit() {
   }
 
   addtext() {
+    let item = {
+      name:this.namestring, 
+      text:this.textstring
+    }
     this.textbool = true; 
-    console.log('works ' + this.textstring); 
-    this.list.push(this.textstring); 
+    this.name.push(item); 
+    this.namestring = '';
     this.textstring = ''; 
   }
 
   cleartext() {
     this.textbool = false; 
-    this.list.remove(); 
+    this.name.remove(); 
   }
 
 }

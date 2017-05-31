@@ -1,5 +1,13 @@
 <div class="center topmargin">
-  <input type="text" (keydown.enter)="addtext()" [(ngModel)]="textstring"/>
+  <input type="text" [(ngModel)]="namestring" placeholder="Name"/>
+</div>
+
+<div class="center topmargin">
+  <input type="text" [(ngModel)]="textstring" placeholder="Text"/>
+</div>
+
+<div class="center">
+  <button (click)="addtext()" class="enterbutton">Enter</button>
 </div>
 
 <div class="center">
@@ -7,7 +15,7 @@
 </div>
 
 <div class="center content topmargin colorblack" *ngIf="textbool">
-  <div *ngFor="let item of list | async">
-    {{item.$value}}
+  <div *ngFor="let item of name | async">
+    {{item.name}}<br>{{item.text}}
   <div>
 </div>

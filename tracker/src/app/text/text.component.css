@@ -24,6 +24,15 @@
     border: 3px solid #ffffff;     
 }
 
+.enterbutton {
+    margin: 0.5%; 
+    margin-bottom: -0.5%; 
+    width: 100px; 
+    border-radius: 25px;
+    background-color: lawngreen;
+    border: 3px solid #ffffff; 
+}
+
 button:active {
     background-color: #ffffff;
     border: 3px solid orangered;
