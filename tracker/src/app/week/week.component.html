@@ -1,3 +1,5 @@
-<div *ngFor="let item of list | async" class="center">
-  <button (click)="add(item.$value)" class="greenbutton">+</button><button (click)="minus(item.$value)" class="redbutton">-</button><span class="fontlistitem">Total: {{item.$value}}</span>
-</div>  
+<div class="marginone">
+  <div *ngFor="let item of list | async" class="center">
+    <button (click)="add(item.$value)" class="greenbutton">+</button><button (click)="minus(item.$value)" class="redbutton">-</button><span class="fontlistitem">Total: {{item.$value}}</span>
+  </div>  
+</div>

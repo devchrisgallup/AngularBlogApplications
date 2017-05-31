@@ -3,7 +3,7 @@
 </div>
 
 <div class="center topmargin">
-  <input type="text" [(ngModel)]="textstring" placeholder="Text"/>
+  <textarea [(ngModel)]="textstring" (keydown.enter)="addtext()" placeholder="Say Something Nice =)"></textarea>
 </div>
 
 <div class="center">
@@ -15,7 +15,7 @@
 </div>
 
 <div class="center content topmargin colorblack" *ngIf="textbool">
-  <div *ngFor="let item of name | async">
-    {{item.name}}<br>{{item.text}}
+  <div class="paddingtwo" *ngFor="let item of name | async">
+    {{item.name}}:<br>{{item.text}}
   <div>
 </div>
