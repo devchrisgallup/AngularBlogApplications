@@ -10,8 +10,8 @@ export class TextComponent implements OnInit {
   // database list items
   public name: FirebaseListObservable<any[]>;
   public field: FirebaseListObservable<any[]>;
-  public textstring:string; 
-  public namestring:string;
+  public textstring:string = ''; 
+  public namestring:string = '';
   public textbool: boolean; 
 
   constructor(private af: AngularFireDatabase) {
@@ -22,14 +22,18 @@ export class TextComponent implements OnInit {
   }
 
   addtext() {
-    let item = {
-      name:this.namestring, 
-      text:this.textstring
+    console.log(this.textstring); 
+    // check for empty fields
+    if (this.namestring !== '' && this.textstring !== '') {
+      let item = {
+        name:this.namestring, 
+        text:this.textstring
+      }
+      this.textbool = true; 
+      this.name.push(item); 
+      this.namestring = '';
+      this.textstring = ''; 
     }
-    this.textbool = true; 
-    this.name.push(item); 
-    this.namestring = '';
-    this.textstring = ''; 
   }
 
   cleartext() {
