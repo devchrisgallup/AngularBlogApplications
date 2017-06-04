@@ -1,3 +1,5 @@
-<h1>
-  {{title}}
-</h1>
+<!--Angular-->
+<form class="container" (ngSubmit)="submitData(userForm.value)" #userForm="ngForm"> 
+  <input type="text" name="firstname" placeholder="First Name:" ngModel>
+  <button type="submit">Submit</button>
+</form>
