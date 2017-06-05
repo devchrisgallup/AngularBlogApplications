@@ -10,7 +10,7 @@ import { IngredientComponent } from './ingredient/ingredient.component';
 const routes: Routes = [
     // default url to content component
     { path: '', pathMatch: 'full', redirectTo: 'content' },
-
+    { path: "**", redirectTo: 'content' },
     { path: 'content', component: ContentComponent },
     { path: 'favorite', component: FavoriteComponent },
     { path: 'ingredient', component: IngredientComponent },
