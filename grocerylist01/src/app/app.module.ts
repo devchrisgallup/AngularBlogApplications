@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
+import { PageNotFoundComponent } from './not-found-component'; 
 // imports
 import { FavoriteComponent } from './favorite/favorite.component';
 import { AppRoutingModule, routingComponents } from './app.routing';
@@ -31,6 +32,7 @@ import { RecipepuppyService } from 'app/services/recipepuppy.service';
     // add to our declarations
     routingComponents,
     IngredientComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
