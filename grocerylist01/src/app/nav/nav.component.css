@@ -26,3 +26,9 @@ nav ul li {
 nav ul li a {
     color: #000;
 }
+
+@media only screen and (max-width: 355px) {
+    nav {
+        height: 75px;
+    }
+}
