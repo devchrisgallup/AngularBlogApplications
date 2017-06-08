@@ -26,6 +26,9 @@ export class IngredientComponent implements OnInit {
 
   ngOnInit() {
     this.searchItem = localStorage.getItem('lastSearch'); 
+    if (this.searchItem == null) {
+       this.searchItem = 'pepper'; 
+    }
     this.items = this.af.database.list('/items');
     this.recipepuppyservice.getData(this.searchItem) 
                     .subscribe(data => this.recipe = data.results);
