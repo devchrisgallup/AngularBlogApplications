@@ -18,20 +18,21 @@ export class IngredientComponent implements OnInit {
   public lastSearch: FirebaseListObservable<any[]>;
   public recipe; 
   public searchItem;
-  public foodArray;  
+  public foodArray;   
   
   constructor(private recipepuppyservice: RecipepuppyService, private af: AngularFire,public toastr: ToastsManager,private vRef:ViewContainerRef) {
-    this.toastr.setRootViewContainerRef(vRef);
+    this.toastr.setRootViewContainerRef(vRef); 
   }
 
   ngOnInit() {
     this.searchItem = localStorage.getItem('lastSearch'); 
     if (this.searchItem == null) {
-       this.searchItem = 'pepper'; 
+       this.searchItem = 'pepper';
     }
     this.items = this.af.database.list('/items');
     this.recipepuppyservice.getData(this.searchItem) 
                     .subscribe(data => this.recipe = data.results);
+    this.searchItem = ''; 
   }
 
   getData() {
