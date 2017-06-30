@@ -13,7 +13,7 @@ button {
     font-size: 1em; 
     background-color: #FFFFFF;
     color: #707070;
-    margin: 3% 0.5%; 
+    margin: 0.5% 0.5%; 
     border-color: #707070;
     border-width: 4px; 
 }
@@ -38,8 +38,8 @@ input[type="text"] {
 
 img {
     margin: 0 auto; 
-    width: 65%; 
-    padding: 1%; 
+    width: 40%; 
+    padding: 1.5%; 
     background-color: #FFF; 
 }
 

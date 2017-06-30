@@ -1,7 +1,11 @@
 <div id="container">
   <h1>Grocery List</h1>
+  <!--ngModel to use for two-way data binding to pass a value 
+  to the TypeScript file in order to set a value in Firebase's Database -->
   <input type="text" class="form-control" [(ngModel)]="newItem" (keydown.enter)="add()" placeholder="item to add"/>
   <h1>List</h1>
+  <!--*ngFor to loop through the items array
+  Subscribe to Observable using the async pipe-->
   <ul>
     <li *ngFor="let item of items | async">
       <button class="btn" (click)="favorite(item.$value)">[fav]</button><button class="btn" (click)="delete(item)">[x]</button><span>{{item.$value}}</span>

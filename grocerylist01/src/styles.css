@@ -6,8 +6,18 @@ body, html {
     background-color: #4285f4;
 }
 
+button { 
+    display: inline-block; 
+    font-size: 1em; 
+    background-color: #FFFFFF;
+    color: #707070;
+    margin: 0.5%; 
+    border-color: #707070;
+    border-width: 4px;   
+}
+
 #container {
-    padding: 5% 30%; 
+    padding: 0% 30%; 
 }
 
 #container ul li {

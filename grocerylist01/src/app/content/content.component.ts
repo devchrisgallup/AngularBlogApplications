@@ -10,23 +10,27 @@ import { ToastOptions } from 'ng2-toastr';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
+  // Observables
   items: FirebaseListObservable<any[]>;
   favoriteItem: FirebaseListObservable<any[]>;
+
   newItem: string = '';
   newFavorite: string = '';
   counter: number = 1; 
   
 
   constructor(private af: AngularFire, public toastr: ToastsManager,private vRef:ViewContainerRef) {
-    const items$ = af.database.object('/items');
     this.toastr.setRootViewContainerRef(vRef);
   }
 
   ngOnInit() {
+    // set keys in order to modify their values 
     this.items = this.af.database.list('/items');
     this.favoriteItem = this.af.database.list('/favoriteItem'); 
   }
   
+
+  // add or remove database values
   add() {
     this.items.push(this.newItem); 
     this.newItem = ''; 
