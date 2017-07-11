@@ -1,3 +1,11 @@
+  <!--displayName, email, photoURL-->
+
+  <div *ngIf="(user | async)?.uid">
+    {{(user | async)?.displayName}}<br>
+    {{(user | async)?.email}}<br>
+    <img [src]="(user | async)?.photoURL" >
+  </div>
+  
   <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button><br>
   <button *ngIf="(user | async)?.uid" (click)="logout()">Logout</button><br>
   <input type="text" *ngIf="(user | async)?.uid" placeholder="Press Enter to Chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />

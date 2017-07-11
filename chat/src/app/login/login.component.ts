@@ -46,5 +46,4 @@ export class LoginComponent implements OnInit {
     this.items.push({message: item}); 
     this.messageValue = ''; 
   }
-
 }
