@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   public user: Observable<firebase.User>;
   public items: FirebaseListObservable<any[]>;
+  public messageValue: string = ''; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
@@ -41,8 +42,9 @@ export class LoginComponent implements OnInit {
     this.af.auth.signOut();
   }
 
-  data() {
-    this.items.push("Chris");
+  sendData(item: string) {
+    this.items.push({message: item}); 
+    this.messageValue = ''; 
   }
 
 }

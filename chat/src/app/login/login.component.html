@@ -1,7 +1,6 @@
-  <div> {{ (user | async)?.uid }} </div>
-  <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button>
-  <button *ngIf="(user | async)?.uid" (click)="logout()">Logout</button>
+  <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button><br>
+  <button *ngIf="(user | async)?.uid" (click)="logout()">Logout</button><br>
+  <input type="text" *ngIf="(user | async)?.uid" placeholder="Press Enter to Chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
   <div *ngIf="(user | async)?.uid">
-      <p *ngFor="let item of items | async">{{item.$value}}</p>
+      <p *ngFor="let item of items | async">{{item.message}}</p>
   </div>
-    <button *ngIf="(user | async)?.uid" (click)="data()">Click Me</button>
