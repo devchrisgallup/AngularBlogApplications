@@ -15,14 +15,23 @@ import * as firebase from 'firebase/app';
     AngularFireModule
   ]
 })
+
+// angularfire2 docs
+// https://github.com/angular/angularfire2/blob/master/src/auth/auth.ts
 export class LoginComponent implements OnInit {
 
   public user: Observable<firebase.User>;
   public items: FirebaseListObservable<any[]>;
   public messageValue: string = ''; 
+  public userUid; 
+  public userName; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
+    this.af.authState.subscribe(auth => {
+      this.userUid = auth.uid;
+      this.userName = auth.email;
+    });
    }
 
   ngOnInit() {
@@ -35,7 +44,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    console.log(this.items); 
+    // reset user information
+    this.af.authState.subscribe(auth => {
+      this.userUid = auth.uid;
+      this.userName = auth.email;
+    });
   }
 
   logout() {
@@ -43,7 +56,11 @@ export class LoginComponent implements OnInit {
   }
 
   sendData(item: string) {
-    this.items.push({message: item}); 
-    this.messageValue = ''; 
+    this.items.push({
+      message: item,
+      name:this.userName
+    });
+    
+    this.messageValue = '';
   }
 }
