@@ -1,9 +1,11 @@
   <!--displayName, email, photoURL-->
   <div *ngIf="(user | async)?.uid" class="gravatar">
-    <a title="Log Out"><img *ngIf="(user | async)?.uid" (click)="logout()" [src]="(user | async)?.photoURL" ></a><br>
-    Hello {{(user | async)?.displayName}}
+    <a title="Log Out"><img *ngIf="(user | async)?.uid" (click)="logout()" [src]="(user | async)?.photoURL" ></a>
+    <div class="gravatartext">Hello {{(user | async)?.displayName}}</div>
   </div>
-  <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button><br>
+  <div id="login">
+    <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button>
+  </div>
   <input type="text" *ngIf="(user | async)?.uid" placeholder="Press enter to chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
   <div *ngIf="(user | async)?.uid">
       <ul *ngFor="let item of items | async">
