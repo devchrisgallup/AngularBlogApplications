@@ -1,4 +1,18 @@
 img {
     width: 50px; 
-    height: 50px;  
+    height: 50px; 
+    border: 5px solid #777;
+    border-radius: 90px;
+    margin: 0.5%;
+}
+
+img:hover {
+    cursor: pointer; 
+}
+
+.gravatar {
+    margin-left: 0.5%; 
+    font-size: 1.3rem; 
+    color:#4CAF50; 
+    font-weight: bolder;
 }

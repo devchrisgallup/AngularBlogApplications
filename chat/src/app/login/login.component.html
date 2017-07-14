@@ -1,12 +1,12 @@
   <!--displayName, email, photoURL-->
-  <div *ngIf="(user | async)?.uid">
-    {{(user | async)?.displayName}}<br>
-    {{(user | async)?.email}}<br>
-    <img [src]="(user | async)?.photoURL" >
+  <div *ngIf="(user | async)?.uid" class="gravatar">
+    <a title="Log Out"><img *ngIf="(user | async)?.uid" (click)="logout()" [src]="(user | async)?.photoURL" ></a><br>
+    Hello {{(user | async)?.displayName}}
   </div>
   <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button><br>
-  <button *ngIf="(user | async)?.uid" (click)="logout()">Logout</button><br>
-  <input type="text" *ngIf="(user | async)?.uid" placeholder="Press Enter to Chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
+  <input type="text" *ngIf="(user | async)?.uid" placeholder="Press enter to chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
   <div *ngIf="(user | async)?.uid">
-      <p *ngFor="let item of items | async; let i = index">{{i + 1}} {{item.name}}: {{item.message}}</p>
+      <ul *ngFor="let item of items | async">
+        <li>{{item.name}}: {{item.message}}</li>
+      </ul>
   </div>

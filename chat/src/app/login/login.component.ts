@@ -4,6 +4,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import "rxjs/add/operator/map"
 
 @Component({
   selector: 'app-login',
@@ -30,16 +31,17 @@ export class LoginComponent implements OnInit {
     this.user = af.authState;
     this.af.authState.subscribe(auth => {
       this.userUid = auth.uid;
-      this.userName = auth.email;
+      this.userName = auth.displayName;
     });
    }
 
   ngOnInit() {
     this.items = this.db.list('/item', {
       query: {
-        limitToLast: 50
+        orderByChild: "date",
+        limitToLast: 50,
       }
-    });
+    }).map((array) => array.reverse()) as FirebaseListObservable<any[]>;
   }
 
   login() {
@@ -56,6 +58,13 @@ export class LoginComponent implements OnInit {
   }
 
   sendData(item: string) {
+    this.items = this.db.list('/item', {
+      query: {
+        orderByChild: "date",
+        limitToLast: 50,
+      }
+    }).map((array) => array.reverse()) as FirebaseListObservable<any[]>;
+    
     this.items.push({
       message: item,
       name:this.userName
