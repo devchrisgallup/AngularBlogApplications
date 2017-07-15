@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
     this.items = this.db.list('/item', {
       query: {
         orderByChild: "date",
-        limitToLast: 50,
+        limitToLast: 5,
       }
-    }).map((array) => array.reverse()) as FirebaseListObservable<any[]>;
+    });
   }
 
   login() {
@@ -58,18 +58,18 @@ export class LoginComponent implements OnInit {
   }
 
   sendData(item: string) {
-    this.items = this.db.list('/item', {
-      query: {
-        orderByChild: "date",
-        limitToLast: 50,
-      }
-    }).map((array) => array.reverse()) as FirebaseListObservable<any[]>;
-    
     this.items.push({
       message: item,
       name:this.userName
     });
-    
+
+    this.items = this.db.list('/item', {
+      query: {
+        orderByChild: "date",
+        limitToLast: 5,
+      }
+    });
+
     this.messageValue = '';
   }
 }

@@ -40,3 +40,13 @@ ul {
     list-style-type: none; 
     border-radius: 90px;
 }
+
+@media only screen and (max-width: 900px) {
+    ul {
+        padding: 4%; 
+    }
+
+    input[type="text"] {
+        padding: 4%;
+    }
+}

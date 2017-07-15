@@ -6,9 +6,9 @@
   <div id="login">
     <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button>
   </div>
-  <input type="text" *ngIf="(user | async)?.uid" placeholder="Press enter to chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
   <div *ngIf="(user | async)?.uid">
       <ul *ngFor="let item of items | async">
         <li>{{item.name}}: {{item.message}}</li>
       </ul>
   </div>
+  <input type="text" *ngIf="(user | async)?.uid" placeholder="Press enter to chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
