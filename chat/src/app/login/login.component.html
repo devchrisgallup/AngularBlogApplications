@@ -7,7 +7,7 @@
     <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button>
   </div>
   <div *ngIf="(user | async)?.uid">
-      <ul *ngFor="let item of items | async">
+      <ul *ngFor="let item of items | async" [style.background]="color">
         <li>{{item.name}}: {{item.message}}</li>
       </ul>
   </div>

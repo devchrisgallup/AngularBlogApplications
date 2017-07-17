@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
   public items: FirebaseListObservable<any[]>;
   public messageValue: string = ''; 
   public userUid; 
-  public userName; 
+  public userName;
+  public colorArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']; 
+  public color = 'red';  
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
@@ -45,6 +47,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.getRandomColor(0,5); 
     this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
     // reset user information
     this.af.authState.subscribe(auth => {
@@ -71,5 +74,10 @@ export class LoginComponent implements OnInit {
     });
 
     this.messageValue = '';
+  }
+
+  getRandomColor(top, bottom) { 
+    let rand = Math.floor( Math.random() * ( 1 + top - bottom ) ) + bottom;
+    this.color = this.colorArray[rand]; 
   }
 }
