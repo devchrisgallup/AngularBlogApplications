@@ -47,8 +47,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // changes size if you increase the array
-    this.getRandomColor(0,5); 
+    let size = this.colorArray.length;
+    this.getRandomColor(0,size - 1); 
     this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
     // reset user information
     this.af.authState.subscribe(auth => {
