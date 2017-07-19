@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
   public userUid; 
   public userName;
   public colorArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']; 
-  public color = 'red';  
+  public color = 'red'; 
+  public progressValue = 0;  
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
@@ -75,6 +76,31 @@ export class LoginComponent implements OnInit {
     });
 
     this.messageValue = '';
+  }
+
+  fileButton(event) {
+    // get file
+    let file = event.target.files[0]; 
+
+    // create a storage ref
+    let storageRef = firebase.storage().ref('photos/' + file.name); 
+
+    // upload file
+    let task = storageRef.put(file); 
+
+    // update progress bar
+    task.on('state_changed', 
+      function progress(snapshot) {
+        let percentage = (snapshot.bytesTransferred / snapshot.totalByes) * 100;
+        this.progressValue = percentage; 
+      },
+      function error(err) {
+
+      },
+      
+      function complete() {
+
+      });
   }
 
   getRandomColor(top, bottom) { 
