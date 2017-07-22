@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   public userName;
   public colorArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']; 
   public color = 'red'; 
-  public progressValue: number = 0;  
+  public progressVal: number = 0; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
@@ -89,17 +89,18 @@ export class LoginComponent implements OnInit {
     let task = storageRef.put(file); 
 
     // update progress bar
-    task.on('state_changed', 
-      function progress(snapshot) {
+    task.on(firebase.storage.TaskEvent.STATE_CHANGED, 
+      (snapshot) => {
         var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        this.progressValue = percentage; 
-        console.log(this.progressValue); 
+        this.progressVal = percentage; 
+        console.log(this.progressVal); 
       },
-      function error(err) {
+      (error) => {
         console.log('Error Saving date to firebase storage.');
+        this.progressVal = 60; 
       },
       
-      function complete() {
+      () => {
         console.log('Firebase Storage data save success.');
       });
   }
