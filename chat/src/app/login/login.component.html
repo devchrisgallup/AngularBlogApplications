@@ -12,7 +12,12 @@
       </ul>
   </div>
   <input type="text" *ngIf="(user | async)?.uid" placeholder="Press enter to chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
-  <div>
-    <progress value="{{progressVal}}" max="100">{{progressVal}}</progress>
+  
+  <div *ngIf="(user | async)?.uid">
+    <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
     <input type="file" value="upload" (change)="fileButton($event)">
+  </div>
+
+  <div *ngIf="(user | async)?.uid">
+    <img [src]="image">
   </div>

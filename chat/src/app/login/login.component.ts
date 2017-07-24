@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   public colorArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']; 
   public color = 'red'; 
   public progressVal: number = 0; 
+  public image: string; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
@@ -36,6 +37,10 @@ export class LoginComponent implements OnInit {
       this.userUid = auth.uid;
       this.userName = auth.displayName;
     });
+
+    //firebase storage
+    const strRef = firebase.storage().ref().child('photos/frogs.png');
+    strRef.getDownloadURL().then(url => this.image = url); 
    }
 
   ngOnInit() {
