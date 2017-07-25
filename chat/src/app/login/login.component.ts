@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   public color = 'red'; 
   public progressVal: number = 0; 
   public image: string; 
+  public imageUrl: FirebaseListObservable<any[]>;; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
@@ -50,6 +51,7 @@ export class LoginComponent implements OnInit {
         limitToLast: 5,
       }
     });
+    this.imageUrl = this.db.list('/photos')
   }
 
   login() {
@@ -92,6 +94,10 @@ export class LoginComponent implements OnInit {
 
     // upload file
     let task = storageRef.put(file); 
+    
+    // store file metadata 
+    // used for firebase storage download
+    this.imageUrl.push({imageUrl: file.name}); 
 
     // update progress bar
     task.on(firebase.storage.TaskEvent.STATE_CHANGED, 
