@@ -29,8 +29,9 @@ export class LoginComponent implements OnInit {
   public colorArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']; 
   public color = 'red'; 
   public progressVal: number = 0; 
-  public image: string; 
-  public imageUrl: FirebaseListObservable<any[]>;; 
+  public image;
+  public imageUrl: FirebaseListObservable<any[]>;
+  public imageList; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
@@ -40,8 +41,10 @@ export class LoginComponent implements OnInit {
     });
 
     //firebase storage
-    const strRef = firebase.storage().ref().child('photos/frogs.png');
-    strRef.getDownloadURL().then(url => this.image = url); 
+    // let strRef = firebase.storage().ref().child('photos/frogs.png');
+    // strRef.getMetadata().then(url => {
+    //     //  console.log(url.size);
+    // }); 
    }
 
   ngOnInit() {
@@ -51,7 +54,17 @@ export class LoginComponent implements OnInit {
         limitToLast: 5,
       }
     });
-    this.imageUrl = this.db.list('/photos')
+    this.imageUrl = this.db.list('/photos');
+
+    this.imageUrl.subscribe(
+      item => {
+        item.forEach(items => {
+            let strRef = firebase.storage().ref().child('photos/' + items.imageUrl);
+            strRef.getDownloadURL().then(url => {
+                this.imageList += '<img src=' + url + '>'; 
+            }); 
+        });
+      });
   }
 
   login() {
@@ -104,7 +117,6 @@ export class LoginComponent implements OnInit {
       (snapshot) => {
         var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         this.progressVal = percentage; 
-        console.log(this.progressVal); 
       },
       (error) => {
         console.log('Error Saving date to firebase storage.');

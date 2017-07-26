@@ -18,6 +18,5 @@
     <input type="file" value="upload" (change)="fileButton($event)">
   </div>
 
-  <div *ngIf="(user | async)?.uid">
-    <img [src]="image">
+  <div [innerHtml]="imageList">
   </div>
