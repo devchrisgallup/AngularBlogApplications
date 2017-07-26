@@ -16,12 +16,13 @@ button {
     cursor: pointer;
 }
 
+
+
 input[type="text"] {
     background-color: #4CAF50;
     color: white;
     padding: 1% 2%;
     text-align: center;
-    display: inline-block;
     font-size: 16px;
     margin-left: 0.5%; 
     width: fit-content;
@@ -35,7 +36,6 @@ input[type="file"] {
     text-align: center;
     display: inline-block;
     font-size: 16px;
-    margin-left: 0.5%; 
     width: fit-content;
 }
 
@@ -59,6 +59,23 @@ ul {
     padding: 0.5%; 
     list-style-type: none; 
     border-radius: 90px;
+}
+
+#imagelist {
+    font-size: 0; 
+    width: 40%; 
+    float: right; 
+    padding: 0 20% 0 2%; 
+}
+
+#imagelist img {
+    width: 150px; 
+    height: auto; 
+    padding: 1%; 
+}
+
+#imageloader {
+    float: right; 
 }
 
 @media only screen and (max-width: 900px) {

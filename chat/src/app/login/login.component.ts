@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
   public image;
   public imageUrl: FirebaseListObservable<any[]>;
   public imageList; 
+  public display = 'block'; 
+  public loading = 'none'; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
@@ -39,12 +41,16 @@ export class LoginComponent implements OnInit {
       this.userUid = auth.uid;
       this.userName = auth.displayName;
     });
-
-    //firebase storage
-    // let strRef = firebase.storage().ref().child('photos/frogs.png');
-    // strRef.getMetadata().then(url => {
-    //     //  console.log(url.size);
-    // }); 
+    this.imageUrl = this.db.list('/photos');
+    this.imageUrl.subscribe(
+      item => {
+        item.forEach(items => {
+          let strRef = firebase.storage().ref().child('photos/' + items.imageUrl);
+          strRef.getDownloadURL().then(url => {
+              this.imageList += '<img src=' + url + ' />'; 
+          }); 
+        });
+      });
    }
 
   ngOnInit() {
@@ -54,17 +60,6 @@ export class LoginComponent implements OnInit {
         limitToLast: 5,
       }
     });
-    this.imageUrl = this.db.list('/photos');
-
-    this.imageUrl.subscribe(
-      item => {
-        item.forEach(items => {
-            let strRef = firebase.storage().ref().child('photos/' + items.imageUrl);
-            strRef.getDownloadURL().then(url => {
-                this.imageList += '<img src=' + url + '>'; 
-            }); 
-        });
-      });
   }
 
   login() {
@@ -99,6 +94,8 @@ export class LoginComponent implements OnInit {
   }
 
   fileButton(event) {
+    this.display = 'none'; 
+    this.loading = 'block'; 
     // get file
     let file = event.target.files[0]; 
 
@@ -110,7 +107,7 @@ export class LoginComponent implements OnInit {
     
     // store file metadata 
     // used for firebase storage download
-    this.imageUrl.push({imageUrl: file.name}); 
+    this.imageUrl.push({imageUrl: file.name, name: this.userName}); 
 
     // update progress bar
     task.on(firebase.storage.TaskEvent.STATE_CHANGED, 
@@ -125,6 +122,7 @@ export class LoginComponent implements OnInit {
       
       () => {
         console.log('Firebase Storage data save success.');
+        location.reload(); 
       });
   }
 
