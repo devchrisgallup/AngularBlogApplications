@@ -3,7 +3,7 @@
     <a title="Log Out"><img *ngIf="(user | async)?.uid" (click)="logout()" [src]="(user | async)?.photoURL" ></a>
     <div class="gravatartext">Hello {{(user | async)?.displayName}}</div>
   </div>
-  <div id="login">
+  <div id="login" [style.display]="display">
     <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button>
   </div>
 
