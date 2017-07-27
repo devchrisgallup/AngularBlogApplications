@@ -1,29 +1,33 @@
   <!--displayName, email, photoURL-->
+  <div class="txtcenter" [style.display]="loading">
+    <h1>LOADING...</h1>
+  </div>
   <div *ngIf="(user | async)?.uid" class="gravatar">
     <a title="Log Out"><img *ngIf="(user | async)?.uid" (click)="logout()" [src]="(user | async)?.photoURL" ></a>
     <div class="gravatartext">Hello {{(user | async)?.displayName}}</div>
+  </div>
+  <div class="upload">
+    <h1>Upload File</h1>
   </div>
   <div id="login" [style.display]="display">
     <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button>
   </div>
 
-
+  <div class="txtcenter">
+    <h1>Photos</h1>
+  </div>
   <div *ngIf="(user | async)?.uid" id="imagelist" [innerHtml]="imageList" [style.display]="display">
   </div>
 
-  <div [style.display]="loading">
-    LOADING...
+  <div *ngIf="(user | async)?.uid" id="imageloader">
+    <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
+    <input type="file" value="upload" (change)="fileButton($event)">
   </div>
-
 
   <div *ngIf="(user | async)?.uid">
       <ul *ngFor="let item of items | async" [style.background]="color">
         <li>{{item.name}}: {{item.message}}</li>
       </ul>
-  </div>
   <input type="text" *ngIf="(user | async)?.uid" placeholder="Press enter to chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
-  
-  <div *ngIf="(user | async)?.uid" id="imageloader">
-    <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
-    <input type="file" value="upload" (change)="fileButton($event)">
   </div>
+  

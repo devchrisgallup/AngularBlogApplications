@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   public imageList; 
   public display = 'block'; 
   public loading = 'none'; 
+  public placeholder; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
@@ -83,13 +84,6 @@ export class LoginComponent implements OnInit {
       name:this.userName
     });
 
-    this.items = this.db.list('/item', {
-      query: {
-        orderByChild: "date",
-        limitToLast: 5,
-      }
-    });
-
     this.messageValue = '';
   }
 
@@ -122,7 +116,7 @@ export class LoginComponent implements OnInit {
       
       () => {
         console.log('Firebase Storage data save success.');
-        location.reload(); 
+          location.reload(); 
       });
   }
 

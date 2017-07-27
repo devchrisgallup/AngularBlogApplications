@@ -16,8 +16,6 @@ button {
     cursor: pointer;
 }
 
-
-
 input[type="text"] {
     background-color: #4CAF50;
     color: white;
@@ -30,7 +28,7 @@ input[type="text"] {
 
 input[type="file"] {
     width: fit-content; 
-    padding: 1%; 
+    padding: 0.2%; 
     background-color: #4CAF50;
     color: white;
     text-align: center;
@@ -61,9 +59,13 @@ ul {
     border-radius: 90px;
 }
 
+h1 {
+    color: tomato; 
+}
+
 #imagelist {
     font-size: 0; 
-    width: 40%; 
+    width: 50%; 
     float: right; 
     padding: 0 20% 0 2%; 
 }
@@ -74,8 +76,17 @@ ul {
     padding: 1%; 
 }
 
-#imageloader {
-    float: right; 
+#imageloader { 
+    padding: 1%; 
+    margin-top: -5%; 
+}
+
+.txtcenter {
+    text-align: center; 
+}
+
+.upload {
+    margin-left: 3.5%; 
 }
 
 @media only screen and (max-width: 900px) {
