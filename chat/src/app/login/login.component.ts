@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
   public imageUrlArray = []; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
+    // Firebase Authentication 
     this.user = af.authState;
     this.af.authState.subscribe(auth => {
       if (auth) {
@@ -50,14 +51,15 @@ export class LoginComponent implements OnInit {
             limitToLast: 20,
           } 
         });
-    
+        // image URL's are stored in firebase realtime database
+        // then used to retrive the images that are stored in
+        // firebase storage 
         this.imageUrl.subscribe( 
           item => {
             let i = 0; 
             item.forEach(items => {
               let strRef = firebase.storage().ref().child('photos/' + items.imageUrl);
               strRef.getDownloadURL().then(url => {
-                  // this.imageList += '<img src=' + url + ' />'; 
                   this.imageUrlArray[i] = url;
                   i++; 
               }); 
@@ -70,6 +72,7 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
+    // chat list observable 
     this.items = this.db.list('/item', {
       query: {
         orderByChild: "date",
@@ -94,6 +97,8 @@ export class LoginComponent implements OnInit {
   }
 
   sendData(item: string) {
+    // push user input to 
+    // used for the chat feature
     this.items.push({
       message: item,
       name:this.userName
@@ -104,7 +109,8 @@ export class LoginComponent implements OnInit {
 
   fileButton(event) {
     this.display = 'none'; 
-    this.loading = 'block'; 
+    this.loading = 'block';
+
     // get file
     let file = event.target.files[0]; 
 
@@ -138,6 +144,7 @@ export class LoginComponent implements OnInit {
   }
 
   getRandomColor(top, bottom) { 
+    // random color for chat ul li
     let rand = Math.floor( Math.random() * ( 1 + top - bottom ) ) + bottom;
     this.color = this.colorArray[rand]; 
   }

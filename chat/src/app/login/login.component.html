@@ -1,4 +1,5 @@
-  <!--displayName, email, photoURL-->
+<!--data from google sign in: displayName, email, photoURL-->
+<!--Login-->
   <div *ngIf="(user | async)?.uid" class="gravatar">
     <a title="Log Out"><img *ngIf="(user | async)?.uid" (click)="logout()" [src]="(user | async)?.photoURL" ></a>
     <div class="gravatartext">Hello {{(user | async)?.displayName}}</div>
@@ -7,23 +8,24 @@
     <h1 [innerHtml]="upload">Upload</h1>
   </div>
   <div id="login" *ngIf="!(user | async)?.uid" [style.display]="display">
-    <button *ngIf="!(user | async)?.uid" (click)="login()">Login</button>
+    <button *ngIf="!(user | async)?.uid" (click)="login()">Sign in with Google</button>
   </div>
-
+<!--upload file input-->
   <div *ngIf="(user | async)?.uid" >
     <h1 class="txtcenter nowright">Photos</h1>
   <div *ngIf="(user | async)?.uid" id="imageloader">
     <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
     <input type="file" value="upload" (change)="fileButton($event)">
   </div>
-
+<!--chat list items-->
   <div *ngIf="(user | async)?.uid">
       <ul *ngFor="let item of items | async" [style.background]="color">
         <li>{{item.name}}: {{item.message}}</li>
       </ul>
   <input type="text" *ngIf="(user | async)?.uid" placeholder="Press enter to chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
   </div>
-
+<!--images that have been uploaded 
+to Firebase Storage-->
   <div id="imagecontainer">
     <div id="imagelist" *ngFor="let item of imageUrlArray">
       <img *ngIf="(user | async)?.uid" [src]="item" />
