@@ -6,21 +6,19 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from '../environments/firebase.config';
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]

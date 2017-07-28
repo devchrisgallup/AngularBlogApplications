@@ -1,10 +1,10 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
-import "rxjs/add/operator/map"
+import "rxjs/add/operator/map";
 
 @Component({
   selector: 'app-login',
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   public messageValue: string = ''; 
   public userUid; 
   public userName;
-  public colorArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']; 
+  public colorArray = ['red', 'orange', 'green', 'blue']; 
   public color = 'red'; 
   public progressVal: number = 0; 
   public image;
@@ -35,23 +35,38 @@ export class LoginComponent implements OnInit {
   public display = 'block'; 
   public loading = 'none'; 
   public placeholder; 
+  public upload = 'Upload'; 
+  public imageUrlArray = []; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     this.user = af.authState;
     this.af.authState.subscribe(auth => {
-      this.userUid = auth.uid;
-      this.userName = auth.displayName;
-    });
-    this.imageUrl = this.db.list('/photos');
-    this.imageUrl.subscribe(
-      item => {
-        item.forEach(items => {
-          let strRef = firebase.storage().ref().child('photos/' + items.imageUrl);
-          strRef.getDownloadURL().then(url => {
-              this.imageList += '<img src=' + url + ' />'; 
-          }); 
+      if (auth) {
+        this.userUid = auth.uid;
+        this.userName = auth.displayName;
+        this.imageUrl = this.db.list('/photos', {
+          query: {
+            orderByChild: "date",
+            limitToLast: 20,
+          } 
         });
-      });
+    
+        this.imageUrl.subscribe( 
+          item => {
+            let i = 0; 
+            item.forEach(items => {
+              let strRef = firebase.storage().ref().child('photos/' + items.imageUrl);
+              strRef.getDownloadURL().then(url => {
+                  // this.imageList += '<img src=' + url + ' />'; 
+                  this.imageUrlArray[i] = url;
+                  i++; 
+              }); 
+            }); 
+          });
+      } else {
+        console.log('not logged in'); 
+      }
+    });
    }
 
   ngOnInit() {
@@ -63,9 +78,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
+  login() { 
     let size = this.colorArray.length;
-    this.getRandomColor(0,size - 1); 
+    this.getRandomColor(0,size); 
     this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
     // reset user information
     this.af.authState.subscribe(auth => {
@@ -98,10 +113,6 @@ export class LoginComponent implements OnInit {
 
     // upload file
     let task = storageRef.put(file); 
-    
-    // store file metadata 
-    // used for firebase storage download
-    this.imageUrl.push({imageUrl: file.name, name: this.userName}); 
 
     // update progress bar
     task.on(firebase.storage.TaskEvent.STATE_CHANGED, 
@@ -111,12 +122,18 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log('Error Saving date to firebase storage.');
-        this.progressVal = 60; 
       },
       
       () => {
         console.log('Firebase Storage data save success.');
-          location.reload(); 
+        this.upload = 'Success!';
+        // store file metadata 
+        // used for firebase storage download
+        this.imageUrl.push({imageUrl: file.name, name: this.userName}); 
+        this.display = 'block'; 
+        this.upload = 'Upload'; 
+        this.loading = 'none'; 
+        this.progressVal = 0;  
       });
   }
 

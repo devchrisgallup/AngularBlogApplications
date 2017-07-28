@@ -38,7 +38,6 @@ input[type="file"] {
 }
 
 progress[value] {
-    margin-left: 0.5%; 
     background-color: #eee;
     border-radius: 5px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25) inset;
@@ -63,17 +62,16 @@ h1 {
     color: tomato; 
 }
 
-#imagelist {
-    font-size: 0; 
-    width: 50%; 
-    float: right; 
-    padding: 0 20% 0 2%; 
+img {
+    width: 40px; 
+    height: 40px; 
+    border: 5px solid #4CAF50;
+    border-radius: 90px;
+    margin: 0.5%;
 }
 
-#imagelist img {
-    width: 150px; 
-    height: auto; 
-    padding: 1%; 
+img:hover {
+    cursor: pointer; 
 }
 
 #imageloader { 
@@ -89,12 +87,55 @@ h1 {
     margin-left: 3.5%; 
 }
 
-@media only screen and (max-width: 900px) {
-    ul {
-        padding: 4%; 
+@media only screen and (max-width: 1200px) {
+    #imagelist {
+        padding: 0 5% 0 2%; 
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    input[type="text"] {
+        width: 40%;
+        font-size: 10px; 
     }
 
-    input[type="text"] {
-        padding: 4%;
+    input[type="file"] {
+        width: 40%; 
+        padding: 0; 
+        margin: 0; 
+        font-size: 10px; 
+    }
+
+    progress[value] {
+        width: 40%; 
+        padding: 0; 
+        margin: 0; 
+    }
+
+    ul {
+        width: 40%; 
+        font-size: 12px;
+        padding: 0.5%; 
+        border-radius: 7px; 
+    }
+
+    #imagelist {
+        padding: 0; 
+        margin: 0; 
+    }
+    
+    #imagelist img {
+        width: 40%; 
+        height: auto; 
+        padding: 0.5%; 
+        margin: 0;  
+    }
+
+    .nowright {
+        text-align: right;
+        margin-right: 14%;
+        float: right;  
+        width: 40%; 
+        margin-top: -80px; 
     }
 }
