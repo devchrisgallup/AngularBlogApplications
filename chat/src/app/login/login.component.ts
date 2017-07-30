@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
         this.userName = auth.displayName;
         this.imageUrl = this.db.list('/photos', {
           query: {
-            orderByChild: "date",
             limitToLast: 20,
           } 
         });
@@ -110,16 +109,12 @@ export class LoginComponent implements OnInit {
   fileButton(event) {
     this.display = 'none'; 
     this.loading = 'block';
-
     // get file
     let file = event.target.files[0]; 
-
     // create a storage ref
     let storageRef = firebase.storage().ref('photos/' + file.name); 
-
     // upload file
     let task = storageRef.put(file); 
-
     // update progress bar
     task.on(firebase.storage.TaskEvent.STATE_CHANGED, 
       (snapshot) => {
@@ -128,8 +123,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log('Error Saving date to firebase storage.');
-      },
-      
+      }, 
       () => {
         console.log('Firebase Storage data save success.');
         this.upload = 'Success!';
@@ -142,9 +136,8 @@ export class LoginComponent implements OnInit {
         this.progressVal = 0;  
       });
   }
-
+  // random color for chat ul li
   getRandomColor(top, bottom) { 
-    // random color for chat ul li
     let rand = Math.floor( Math.random() * ( 1 + top - bottom ) ) + bottom;
     this.color = this.colorArray[rand]; 
   }

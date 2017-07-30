@@ -24,11 +24,11 @@
       </ul>
   <input type="text" *ngIf="(user | async)?.uid" placeholder="Press enter to chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
   </div>
-<!--images that have been uploaded 
+<!--Display images that have been uploaded 
 to Firebase Storage-->
   <div id="imagecontainer">
     <div id="imagelist" *ngFor="let item of imageUrlArray">
-      <img *ngIf="(user | async)?.uid" [src]="item" />
+      <a [href]="item"><img *ngIf="(user | async)?.uid" [src]="item" /></a>
     </div>
   </div>
   
