@@ -13,6 +13,7 @@
 <!--upload file input-->
   <div *ngIf="(user | async)?.uid" >
     <h1 class="txtcenter nowright">Photos</h1>
+    <h3 class="txtcenter nowright">{{month + 1}}/{{day}}/{{year}}</h3>
   <div *ngIf="(user | async)?.uid" id="imageloader">
     <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
     <input type="file" value="upload" (change)="fileButton($event)">
@@ -28,7 +29,7 @@
 to Firebase Storage-->
   <div id="imagecontainer">
     <div id="imagelist" *ngFor="let item of imageUrlArray">
-      <a [href]="item"><img *ngIf="(user | async)?.uid" [src]="item" /></a>
+      <a [href]="item" target="_blank"><img *ngIf="(user | async)?.uid" [src]="item" /></a>
     </div>
   </div>
   

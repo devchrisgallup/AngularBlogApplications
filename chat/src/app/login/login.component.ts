@@ -37,6 +37,10 @@ export class LoginComponent implements OnInit {
   public placeholder; 
   public upload = 'Upload'; 
   public imageUrlArray = []; 
+  public time; 
+  public month; 
+  public day; 
+  public year; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     // Firebase Authentication 
@@ -68,6 +72,11 @@ export class LoginComponent implements OnInit {
         console.log('not logged in'); 
       }
     });
+    // Date
+    this.time = new Date(); 
+    this.month = this.time.getMonth(); 
+    this.day = this.time.getDate(); 
+    this.year = this.time.getFullYear(); 
    }
 
   ngOnInit() {
