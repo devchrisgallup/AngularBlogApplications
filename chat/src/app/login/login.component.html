@@ -12,8 +12,8 @@
   </div>
 <!--upload file input-->
   <div *ngIf="(user | async)?.uid" >
+    <h3 class="txtcenter datemargin">{{month + 1}}/{{day}}/{{year}}</h3>
     <h1 class="txtcenter nowright">Photos</h1>
-    <h3 class="txtcenter nowright">{{month + 1}}/{{day}}/{{year}}</h3>
   <div *ngIf="(user | async)?.uid" id="imageloader">
     <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
     <input type="file" value="upload" (change)="fileButton($event)">

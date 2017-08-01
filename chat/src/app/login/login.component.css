@@ -28,6 +28,10 @@
     width: 50%; 
 }
 
+.datemargin {
+    margin-bottom: -15px;
+}
+
 .gravatar {
     margin-left: 0.5%; 
     font-size: 1.3rem; 
@@ -81,6 +85,10 @@
         height: auto; 
         padding: 0.5%; 
         margin: 0;  
+    }
+
+    .datemargin {
+        display: none; 
     }
 
     .nowright {
