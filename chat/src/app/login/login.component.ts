@@ -41,6 +41,8 @@ export class LoginComponent implements OnInit {
   public month; 
   public day; 
   public year; 
+  public daysLeft;
+  public minusDays;  
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     // Firebase Authentication 
@@ -77,6 +79,8 @@ export class LoginComponent implements OnInit {
     this.month = this.time.getMonth(); 
     this.day = this.time.getDate(); 
     this.year = this.time.getFullYear(); 
+    this.daysLeft = this.time.getDay(); 
+    this.minusDays = this.time.getDay(); 
    }
 
   ngOnInit() {

@@ -13,6 +13,7 @@
 <!--upload file input-->
   <div *ngIf="(user | async)?.uid" >
     <h3 class="txtcenter datemargin">{{month + 1}}/{{day}}/{{year}}</h3>
+    <h4 class="txtcenter datemargin">{{7 - daysLeft}} Day(s) to vote</h4>
     <h1 class="txtcenter nowright">Photos</h1>
   <div *ngIf="(user | async)?.uid" id="imageloader">
     <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
