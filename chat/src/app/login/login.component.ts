@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   public progressVal: number = 0; 
   public image;
   public imageUrl: FirebaseListObservable<any[]>;
+  public voteData: FirebaseListObservable<any[]>;
   public imageList; 
   public display = 'block'; 
   public loading = 'none'; 
@@ -43,6 +44,8 @@ export class LoginComponent implements OnInit {
   public year; 
   public daysLeft;
   public minusDays;  
+  public upVote; 
+  public downVote; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     // Firebase Authentication 
@@ -59,7 +62,7 @@ export class LoginComponent implements OnInit {
         // image URL's are stored in firebase realtime database
         // then used to retrive the images that are stored in
         // firebase storage 
-        this.imageUrl.subscribe( 
+        this.imageUrl.subscribe(
           item => {
             let i = 0; 
             item.forEach(items => {
@@ -67,7 +70,7 @@ export class LoginComponent implements OnInit {
               strRef.getDownloadURL().then(url => {
                   this.imageUrlArray[i] = url;
                   i++; 
-              }); 
+              });  
             }); 
           });
       } else {
@@ -91,6 +94,8 @@ export class LoginComponent implements OnInit {
         limitToLast: 5,
       }
     });
+
+    this.voteData = this.db.list('/votes'); 
   }
 
   login() { 
@@ -153,5 +158,18 @@ export class LoginComponent implements OnInit {
   getRandomColor(top, bottom) { 
     let rand = Math.floor( Math.random() * ( 1 + top - bottom ) ) + bottom;
     this.color = this.colorArray[rand]; 
+  }
+  // working on system
+  upvote(imageItem) { 
+    let str = imageItem;
+    this.imageUrl.subscribe(
+      items => {  
+        console.log(imageItem); 
+        items.forEach(element => {
+          if (str.includes(element.imageUrl)) {
+            this.voteData.push({name:element.imageUrl,count:1});
+          }
+        });
+      });
   }
 }

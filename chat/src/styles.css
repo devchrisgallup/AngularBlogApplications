@@ -68,16 +68,17 @@ img {
     height: 40px; 
     border: 5px solid #4CAF50;
     border-radius: 90px;
-    margin: 0.5%;
+    margin: 0.5%; 
 }
 
-img:hover {
-    cursor: pointer; 
-}
 
 #imageloader { 
     padding: 1%; 
     margin-top: -5%; 
+}
+
+.vote {
+    font-size: 1rem;
 }
 
 .txtcenter {
@@ -86,5 +87,6 @@ img:hover {
 
 .upload {
     margin-left: 3.5%; 
+    cursor: hand; 
 }
 
