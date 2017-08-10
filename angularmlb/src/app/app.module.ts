@@ -6,11 +6,15 @@ import { MlbService } from './services/mlb.service';
 
 import { AppComponent } from './app.component';
 import { ContentComponent } from './content/content.component';
+import { GameComponent } from './game/game.component';
+import { NewsComponent } from './news/news.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContentComponent
+    ContentComponent,
+    GameComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
