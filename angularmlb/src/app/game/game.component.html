@@ -1,5 +1,4 @@
 <button (click)="logging()">Console Log Data</button>
-
 <h1>{{homeName}}</h1>
 <h1>{{homescore}}</h1>
 <h1>{{awayName}}</h1>
@@ -7,7 +6,7 @@
 <div class="score">
   <ol>
     <li *ngFor="let item of inning; let i = index">{{i + 1}}</li><br>
-    <li *ngFor="let item of inning">{{item.home}}</li> {{homeName}} <br>
-    <li *ngFor="let item of inning">{{item.away}}</li> {{awayName}}
+    <li *ngFor="let item of inning">{{item.away}}</li> {{awayName}}<br>
+    <li *ngFor="let item of inning">{{item.home}}</li> {{homeName}}
   </ol>
 </div>

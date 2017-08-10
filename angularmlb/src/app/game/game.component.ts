@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { MlbService } from 'app/services/mlb.service'; 
 
 @Component({
@@ -18,11 +18,15 @@ export class GameComponent implements OnInit {
 
   ngOnInit() {
     this.mlbService.getData()
-                   .forEach(data => this.game = data.data.games.game);
+                  .forEach(data => this.game = data.data.games.game);
   }
 
-  
+  ngAfterContentChecked() {
+    this.logging(); 
+  }
+
   logging() {
+    console.log('called'); 
     this.game.forEach(item =>  {
       if (item.home_team_name == 'Royals') {
         this.homeName = item.home_team_name;
@@ -40,8 +44,16 @@ export class GameComponent implements OnInit {
     }); 
     // Caculate 
     this.score.forEach(item => {
-      this.homescore = this.homescore + parseInt(item.home); 
-      this.awayscore = this.awayscore + parseInt(item.away); 
+      if (parseInt(item.home)) {
+        this.homescore = this.homescore + parseInt(item.home); 
+      } else {
+        this.homescore = this.homescore; 
+      }
+      if (parseInt(item.away)) {
+        this.awayscore = this.awayscore + parseInt(item.away); 
+      } else {
+        this.awayscore = this.awayscore; 
+      }
     })
   }
 
