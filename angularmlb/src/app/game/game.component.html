@@ -1,7 +1,14 @@
-<button (click)="logging()">Console Log Data</button>
-<h1>{{homeName}}</h1>
+<label>Team</label>
+<select [(ngModel)]="team"> 
+  <option *ngFor="let val of teams" [attr.value]="val">{{val}}</option>
+</select>
+<label>Date</label>
+<input type="date" [(ngModel)]="dateplayed" (change)="rundata()">
+<h1>{{homecity}} {{homeName}}</h1>
+<h2></h2>
 <h1>{{homescore}}</h1>
-<h1>{{awayName}}</h1>
+<h1>{{awaycity}} {{awayName}}</h1>
+<h2></h2>
 <h1>{{awayscore}}</h1>
 <div class="score">
   <ol>
