@@ -13,6 +13,10 @@ export class GameComponent implements OnInit {
   public awayName; 
   public homecity;
   public awaycity; 
+  public awayloss;
+  public awaywin; 
+  public homeloss;
+  public homewin; 
   public score;
   public homescore = 0; 
   public awayscore = 0;  
@@ -32,9 +36,9 @@ export class GameComponent implements OnInit {
   ngAfterContentChecked() {
     this.logging(); 
   }
-
-  rundata() {
-    console.log(this.dateplayed); 
+  // date selected by user
+  // from the date picker
+  rundata() { 
     let datesplit = this.dateplayed.split("-"); 
     let year = datesplit[0];
     let month = datesplit[1]; 
@@ -44,12 +48,17 @@ export class GameComponent implements OnInit {
   }
 
   logging() { 
+    console.log(this.game); 
     this.game.forEach(item =>  {
       if (item.home_team_name == this.team) {
         this.homecity = item.home_team_city; 
         this.awaycity = item.away_team_city; 
         this.homeName = item.home_team_name;
         this.awayName = item.away_team_name; 
+        this.awayloss = item.away_loss; 
+        this.awaywin = item.away_win; 
+        this.homeloss = item.home_loss; 
+        this.homewin = item.home_win; 
         this.inning = item.linescore.inning;
         this.score = item.linescore.inning;  
       } else if (item.away_team_name == this.team) {
@@ -57,6 +66,10 @@ export class GameComponent implements OnInit {
         this.awaycity = item.away_team_city;
         this.homeName = item.home_team_name;
         this.awayName = item.away_team_name; 
+        this.awayloss = item.away_loss; 
+        this.awaywin = item.away_win; 
+        this.homeloss = item.home_loss; 
+        this.homewin = item.home_win; 
         this.inning = item.linescore.inning;
         this.score = item.linescore.inning;
       } else {

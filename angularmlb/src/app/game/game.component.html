@@ -4,12 +4,16 @@
 </select>
 <label>Date</label>
 <input type="date" [(ngModel)]="dateplayed" (change)="rundata()">
-<h1>{{homecity}} {{homeName}}</h1>
-<h2></h2>
-<h1>{{homescore}}</h1>
 <h1>{{awaycity}} {{awayName}}</h1>
-<h2></h2>
-<h1>{{awayscore}}</h1>
+<div class="scorecontainer">
+  <h1>{{awayscore}}</h1><p>&nbsp;&nbsp;({{awaywin}}-{{awayloss}})</p>
+</div>
+<h1>{{homecity}} {{homeName}}</h1>
+<div class="scorecontainer">
+  <h1>{{homescore}}</h1><p>&nbsp;&nbsp;({{homewin}}-{{homeloss}})</p>
+</div>
+<br>
+<!--score for each inning-->
 <div class="score">
   <ol>
     <li *ngFor="let item of inning; let i = index">{{i + 1}}</li><br>
