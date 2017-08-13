@@ -6,14 +6,34 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class MlbService {
     public dataUrl: string; 
-    constructor(private http: Http) {
-    }
+    private bootdate = new Date(); 
+    private year = this.bootdate.getFullYear(); 
+    private month = this.bootdate.getMonth() + 1; 
+    private day = this.bootdate.getDate() - 1; 
+    constructor(private http: Http) { }
     // get data
-    getData() {
-        // http get request
-        this.dataUrl = 'http://mlb.mlb.com/gdcross/components/game/mlb/year_2017/month_08/day_10/master_scoreboard.json';
-        return this.http.get(this.dataUrl)
-        .map(data => data.json());  
+    getData() { 
+        if(this.month <= 9 && this.day <= 9) {
+            // http get request
+            this.dataUrl = 'http://mlb.mlb.com/gdcross/components/game/mlb/year_' + this.year + '/month_0' + this.month + '/day_0' + this.day + '/master_scoreboard.json';
+            return this.http.get(this.dataUrl)
+            .map(data => data.json());  
+        } else if (this.month <= 9) {
+            // http get request
+            this.dataUrl = 'http://mlb.mlb.com/gdcross/components/game/mlb/year_' + this.year + '/month_0' + this.month + '/day_' + this.day + '/master_scoreboard.json';
+            return this.http.get(this.dataUrl)
+            .map(data => data.json());  
+        } else if (this.day <= 9) {
+            // http get request
+            this.dataUrl = 'http://mlb.mlb.com/gdcross/components/game/mlb/year_' + this.year + '/month_' + this.month + '/day_0' + this.day + '/master_scoreboard.json';
+            return this.http.get(this.dataUrl)
+            .map(data => data.json());  
+        } else {
+            // http get request
+            this.dataUrl = 'http://mlb.mlb.com/gdcross/components/game/mlb/year_' + this.year + '/month_' + this.month + '/day_' + this.day + '/master_scoreboard.json';
+            return this.http.get(this.dataUrl)
+            .map(data => data.json());  
+        }
     }
 
     // get selected data
