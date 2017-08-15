@@ -1,3 +1,6 @@
 <p>
-  news works!
+  <button (click)="getVideos()">Get Videos</button>
 </p>
+<div *ngFor="let item of videoUrlArray">
+  <a [href]="item">{{item}}</a>
+</div>

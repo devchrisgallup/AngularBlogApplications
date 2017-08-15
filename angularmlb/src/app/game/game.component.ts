@@ -48,7 +48,7 @@ export class GameComponent implements OnInit {
   }
 
   logging() { 
-    // console.log(this.game); 
+    console.log(this.game); 
     this.game.forEach(item =>  {
       if (item.home_team_name == this.team) {
         this.homecity = item.home_team_city; 

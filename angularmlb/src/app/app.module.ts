@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MlbService } from './services/mlb.service'; 
+import { YoutubeService } from './services/youtube.service';
 
 import { AppComponent } from './app.component';
 import { ContentComponent } from './content/content.component';
@@ -22,7 +23,8 @@ import { NewsComponent } from './news/news.component';
     HttpModule
   ],
   providers: [
-    MlbService
+    MlbService,
+    YoutubeService
   ],
   bootstrap: [AppComponent]
 })
