@@ -8,7 +8,7 @@ import { YoutubeService } from 'app/services/youtube.service';
 })
 export class NewsComponent implements OnInit {
   public video; 
-  public videoUrlArray = ["https://www.youtube.com/embed/YC4K-mikkj4?ecver=1"]; 
+  public videoUrlArray = []; 
 
   constructor(private youtubeService: YoutubeService) { }
 
@@ -22,9 +22,11 @@ export class NewsComponent implements OnInit {
   }
 
   getVideos() {
-    for (let i = 0; i < this.video.length; i++) {
-      if (this.video[i].id.videoId !== undefined) {
-        this.videoUrlArray[i] = "https://www.youtube.com/embed/" + this.video[i].id.videoId + "?ecver=1"
+    for (let i = 0; i < this.video.length; i++) { 
+      if (this.video[i].id.videoId === undefined) {
+        this.videoUrlArray[i] = ''; 
+      } else {
+        this.videoUrlArray[i] = "https://www.youtube.com/embed/" + this.video[i].id.videoId + "?ecver=1";
       }
     }
     console.log(this.videoUrlArray); 

@@ -12,7 +12,7 @@ export class YoutubeService {
   // get data
   getData() { 
     // http get request
-    this.dataUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=mlb&key=youkey';
+    this.dataUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=mlb&key=yourkey';
     return this.http.get(this.dataUrl)
                     .map(data => data.json()); 
   }

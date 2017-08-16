@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MlbService } from './services/mlb.service'; 
 import { YoutubeService } from './services/youtube.service';
+import { SafePipe } from '../safe.pipe';
 
 import { AppComponent } from './app.component';
 import { ContentComponent } from './content/content.component';
@@ -15,7 +16,8 @@ import { NewsComponent } from './news/news.component';
     AppComponent,
     ContentComponent,
     GameComponent,
-    NewsComponent
+    NewsComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import { NewsComponent } from './news/news.component';
   ],
   providers: [
     MlbService,
-    YoutubeService
+    YoutubeService,
   ],
   bootstrap: [AppComponent]
 })

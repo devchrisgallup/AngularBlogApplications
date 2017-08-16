@@ -1,6 +1,10 @@
-<p>
-  <button (click)="getVideos()">Get Videos</button>
-</p>
-<div *ngFor="let item of videoUrlArray">
-  <a [href]="item">{{item}}</a>
+<div class="newscontainer">
+  <h1>YouTube</h1>
+  <div *ngFor="let item of videoUrlArray">
+    <div *ngIf="item" class="floatRight">
+      <iframe [src]="item | safe" width="280" height="156" allowfullscreen></iframe>
+    </div>
+  </div>
 </div>
+
+
