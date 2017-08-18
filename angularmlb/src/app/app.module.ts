@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { ContentComponent } from './content/content.component';
 import { GameComponent } from './game/game.component';
 import { NewsComponent } from './news/news.component';
+import { TwitterComponent } from './twitter/twitter.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NewsComponent } from './news/news.component';
     ContentComponent,
     GameComponent,
     NewsComponent,
-    SafePipe
+    SafePipe,
+    TwitterComponent
   ],
   imports: [
     BrowserModule,

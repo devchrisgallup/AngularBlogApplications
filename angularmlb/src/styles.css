@@ -8,3 +8,9 @@ ol {
     margin: 0; 
     padding: 0; 
 }
+/*Does not support IE<8*/
+.clearBoth:after {
+  content: "";
+  display: table;
+  clear: both;
+}
