@@ -1,4 +1,5 @@
 <div class="container">
+  <h1>Select A Team</h1>
   <label>Team</label>
     <select [(ngModel)]="team"> 
       <option *ngFor="let val of teams" [attr.value]="val">{{val}}</option>

@@ -9,7 +9,7 @@ export class MlbService {
     private bootdate = new Date(); 
     private year = this.bootdate.getFullYear(); 
     private month = this.bootdate.getMonth() + 1; 
-    private day = this.bootdate.getDate() - 1; 
+    private day = this.bootdate.getDate() - 2; 
     constructor(private http: Http) { }
     // get data
     getData() { 

@@ -1,7 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 html, body {
+    color: #ffffff;
     margin: 0; 
     padding: 0; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  background: url(assets/baseball.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1 {
+    color: #ffffff;
 }
 
 ol {

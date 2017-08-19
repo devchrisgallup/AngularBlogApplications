@@ -1,11 +1,25 @@
+iframe {
+    background-color: #fff; 
+    padding: 3%; 
+    margin: 1%; 
+    border: 2px solid #ffffff;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+h1 {
+    color: #ffffff; 
+}
+
 .floatRight {
     float: right; 
 }
 
-.newscontainer {
+.newscontainer { 
     width: 60%; 
     margin-left: 20%; 
-    margin-top: -19%; 
+    /*margin-top: -25%; */
     text-align: center;
 }
 
@@ -13,7 +27,7 @@
     .newscontainer {
         width: 80%; 
         margin-left: 10%; 
-        margin-top: -22%; 
+        /*margin-top: -22%; */
     }
 }
 
@@ -21,7 +35,7 @@
     .newscontainer {
         width: 60%; 
         margin-left: 25%; 
-        margin-top: -22%; 
+        /*margin-top: -22%; */
     }
 }
 
