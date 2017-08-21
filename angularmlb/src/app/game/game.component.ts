@@ -21,6 +21,8 @@ export class GameComponent implements OnInit {
   public homescore = 0; 
   public awayscore = 0;  
   public inning; 
+  public originalDate = ''; 
+  public displayDate; 
   private team = 'Royals'; 
   private teams = ['Royals', 'Cardinals', 'Indians', 'Rockies', 'Mets', 'Rangers', 'Mariners', 'Athletics', 'Orioles', 'Angels', 'Cubs', 'Giants',
                    'Marlins', 'Nationals', 'Yankees', 'Blue Jays', 'Rays', 'Red Sox', 'Pirates', 'Tigers', 'Padres', 'Reds', 'Phillies', 'Braves',
@@ -50,7 +52,7 @@ export class GameComponent implements OnInit {
   logging() { 
     // console.log(this.game); 
     this.game.forEach(item =>  {
-      if (item.home_team_name == this.team) {
+      if (item.home_team_name == this.team) { 
         this.homecity = item.home_team_city; 
         this.awaycity = item.away_team_city; 
         this.homeName = item.home_team_name;
@@ -60,7 +62,10 @@ export class GameComponent implements OnInit {
         this.homeloss = item.home_loss; 
         this.homewin = item.home_win; 
         this.inning = item.linescore.inning;
-        this.score = item.linescore.inning;  
+        this.score = item.linescore.inning; 
+        this.originalDate = item.original_date.split('/'); 
+        this.displayDate += this.originalDate[1]; 
+        this.displayDate += this.originalDate[2]; 
       } else if (item.away_team_name == this.team) {
         this.homecity = item.home_team_city; 
         this.awaycity = item.away_team_city;
@@ -72,8 +77,10 @@ export class GameComponent implements OnInit {
         this.homewin = item.home_win; 
         this.inning = item.linescore.inning;
         this.score = item.linescore.inning;
+        this.originalDate = item.original_date.split('/'); 
+
       } else {
-        // console.log('Your team did not play today.');
+        console.log('Your team did not play today.');
       }
     }); 
     // Caculate totals score for each  team

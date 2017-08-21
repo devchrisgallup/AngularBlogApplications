@@ -6,6 +6,7 @@
     </select>
     <label>Date</label>
     <input type="date" [(ngModel)]="dateplayed" (change)="rundata()">
+    <h4>Played On {{displayDate}}</h4>
     <h1>{{awaycity}} {{awayName}}</h1>
     <div class="scorecontainer">
       <h1>{{awayscore}}</h1><p>&nbsp;&nbsp;({{awaywin}}-{{awayloss}})</p>
