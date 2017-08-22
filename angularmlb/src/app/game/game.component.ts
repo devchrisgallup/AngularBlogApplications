@@ -22,9 +22,8 @@ export class GameComponent implements OnInit {
   public awayscore = 0;  
   public inning; 
   public originalDate = ''; 
-  public displayDate; 
-  private team = 'Royals'; 
-  private teams = ['Royals', 'Cardinals', 'Indians', 'Rockies', 'Mets', 'Rangers', 'Mariners', 'Athletics', 'Orioles', 'Angels', 'Cubs', 'Giants',
+  public team = 'Royals'; 
+  public teams = ['Royals', 'Cardinals', 'Indians', 'Rockies', 'Mets', 'Rangers', 'Mariners', 'Athletics', 'Orioles', 'Angels', 'Cubs', 'Giants',
                    'Marlins', 'Nationals', 'Yankees', 'Blue Jays', 'Rays', 'Red Sox', 'Pirates', 'Tigers', 'Padres', 'Reds', 'Phillies', 'Braves',
                    'Astros', 'White Sox', 'Twins', 'Brewers', 'Dodgers', 'D-backs'];
   
@@ -63,9 +62,7 @@ export class GameComponent implements OnInit {
         this.homewin = item.home_win; 
         this.inning = item.linescore.inning;
         this.score = item.linescore.inning; 
-        this.originalDate = item.original_date.split('/'); 
-        this.displayDate += this.originalDate[1]; 
-        this.displayDate += this.originalDate[2]; 
+        this.originalDate = item.original_date; 
       } else if (item.away_team_name == this.team) {
         this.homecity = item.home_team_city; 
         this.awaycity = item.away_team_city;
@@ -77,7 +74,7 @@ export class GameComponent implements OnInit {
         this.homewin = item.home_win; 
         this.inning = item.linescore.inning;
         this.score = item.linescore.inning;
-        this.originalDate = item.original_date.split('/'); 
+        this.originalDate = item.original_date; 
 
       } else {
         console.log('Your team did not play today.');
