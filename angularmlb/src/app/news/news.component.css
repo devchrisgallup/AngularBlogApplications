@@ -49,4 +49,8 @@ h1 {
     .floatRight {
         float: none; 
     }
+
+    iframe {
+        margin: 5% 1%;
+}
 }
