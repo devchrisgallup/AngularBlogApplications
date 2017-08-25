@@ -29,7 +29,6 @@ export class NewsComponent implements OnInit {
         this.videoUrlArray[i] = "https://www.youtube.com/embed/" + this.video[i].id.videoId + "?ecver=1";
       }
     }
-    console.log(this.videoUrlArray); 
   }
 
 }

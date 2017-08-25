@@ -39,7 +39,6 @@ export class MlbService {
         return this.http.get(this.dataUrl)
         .map(data => data.json());      
     }
-
     // get selected data
     getSelectedDate(year, month, day) {
         // http get request

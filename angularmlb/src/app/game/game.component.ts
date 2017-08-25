@@ -77,7 +77,7 @@ export class GameComponent implements OnInit {
         this.originalDate = item.original_date; 
 
       } else {
-        console.log('Your team did not play today.');
+        // console.log('Your team did not play today.');
       }
     }); 
     // Caculate totals score for each  team

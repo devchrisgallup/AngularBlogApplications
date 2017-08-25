@@ -8,13 +8,11 @@ export class YoutubeService {
   public dataUrl: string; 
 
   constructor(private http: Http) { }
-
   // get data
   getData() { 
     // http get request
-    this.dataUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=baseball,latest,news&key=YouTube';
+    this.dataUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=baseball,latest,news&key=YourKey';
     return this.http.get(this.dataUrl)
                     .map(data => data.json()); 
   }
-
 }
