@@ -11,7 +11,7 @@ export class YoutubeService {
   // get data
   getData() { 
     // http get request
-    this.dataUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=baseball,latest,news&key=AIzaSyC03ySwoq3RQ05gktTLT4LLfvw2XEA0EsI';
+    this.dataUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=baseball,latest,news&key=YourKey';
     return this.http.get(this.dataUrl)
                     .map(data => data.json()); 
   }
