@@ -1,0 +1,5 @@
+<button (click)="display()">Click Me</button>
+
+<div *ngFor="let item of list | async">
+  {{item.$value}}
+</div>
