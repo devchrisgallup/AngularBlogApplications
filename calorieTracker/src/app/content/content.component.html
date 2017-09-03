@@ -1,14 +1,18 @@
-<div *ngFor="let item of sliderValue | async">
-<input type="range" [min]="minValue" [max]="maxValue" [value]="item" data-show-value="true" data-popup-enabled="true" [(ngModel)]="targetValue" (change)="targetValueChange()">
-<div *ngFor="let item of target | async">
-Target Value: {{item.$value}}
+<div class="container">
+  <div *ngFor="let item of sliderValue | async">
+  <input type="range" [min]="minValue" [max]="maxValue" [value]="item" data-show-value="true" data-popup-enabled="true" [(ngModel)]="targetValue" (change)="targetValueChange()"> value {{targetValue}}
+    <div *ngFor="let item of target | async">
+      Target: {{item.$value}}
+    </div>
+  </div>
+
+    Total: {{grandTotal}}
+
+  <div *ngFor="let item of remaining | async">
+    Remaining: {{item.$value}}
+  </div>  
+
+  <input type="text" [(ngModel)]="calorieAmount" (keydown.enter)="add()" placeholder="Calorie Amount"/>
+
+  <button (click)="removeAll()">Reset</button>
 </div>
-</div>
-
-Total: {{grandTotal}}
-
-<div *ngFor="let item of remaining | async">
-Remaining: {{item.$value}}
-</div>  
-
-<input type="text" [(ngModel)]="calorieAmount" (keydown.enter)="add()" placeholder="Calorie Amount"/>

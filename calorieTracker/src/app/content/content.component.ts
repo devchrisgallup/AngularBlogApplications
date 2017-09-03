@@ -66,4 +66,17 @@ export class ContentComponent implements OnInit {
     this.calorieAmount = ''; 
   }
 
+  removeAll() {
+    let zero = 0; 
+    this.sliderValue.remove();
+    this.target.remove();
+    this.remaining.remove();
+    this.total.remove();
+    this.sliderValue.push(zero);
+    this.target.push(zero);
+    this.remaining.push(zero);
+    this.total.push(zero); 
+    this.grandTotal = 0;
+  }
+
 }
