@@ -27,7 +27,6 @@ export class ContentComponent implements OnInit {
 
   constructor(private listDB: AngularFireDatabase) { 
     var i = 0; 
-    console.log('Constructor was called.');
     this.list = this.listDB.list('/item');
     this.total = this.listDB.list('/total'); 
     this.remaining = this.listDB.list('/remaining');
@@ -35,14 +34,12 @@ export class ContentComponent implements OnInit {
     this.target = this.listDB.list('/target');
     this.total.forEach(item => {
         for(let i = 0; i < item.length; i++) {
-          console.log(item[i].$value); 
          this.grandTotal += parseInt(item[i].$value);
         }
       });
   }
 
   ngOnInit() {
-      console.log('onInit was called.');
       this.list = this.listDB.list('/item');
       this.remainingCalories = this.targetValue - this.grandTotal; 
   }
