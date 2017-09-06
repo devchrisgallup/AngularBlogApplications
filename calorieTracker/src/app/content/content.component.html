@@ -1,4 +1,10 @@
+
 <div class="container">
+    <div *ngFor="let item of target | async">
+      <div *ngIf="item.$value == 0">
+        <p>Please enter a Calorie goal for the day.</p>
+      </div>
+    </div>
   <div *ngFor="let item of sliderValue | async">
   <input type="range" [min]="minValue" [max]="maxValue" [value]="item" data-show-value="true" data-popup-enabled="true" [(ngModel)]="targetValue" (change)="targetValueChange()"> 
       <h1 class="tomato">value {{targetValue}}</h1>
