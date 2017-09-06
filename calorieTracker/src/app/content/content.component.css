@@ -114,6 +114,12 @@ button:active {
     border-radius: 10px; 
 }
 
+.red {
+  font-family: 'Unlock', cursive;
+  color: lawngreen;
+  font-size: 28px;  
+}
+
 .tomato {
     font-size: 4rem;
     color: lawngreen;

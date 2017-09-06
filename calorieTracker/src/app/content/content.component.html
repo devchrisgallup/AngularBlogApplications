@@ -8,7 +8,12 @@
   </div>
     <h2>Total: {{grandTotal}}</h2>
   <div *ngFor="let item of remaining | async">
-    <h2>Remaining: {{item.$value}}</h2>
+    <div class="red" *ngIf="item.$value < 0">
+      It's ok.<br>Tomorrow is Another day!<br>{{item.$value}}
+    </div>
+    <div *ngIf="item.$value >= 0">
+      <h2>Remaining: {{item.$value}}</h2>
+    </div>
   </div>  
   <input type="text" [(ngModel)]="calorieAmount" (keydown.enter)="add()" placeholder="Calorie Amount"/>
   <button (click)="removeAll()">Reset</button>

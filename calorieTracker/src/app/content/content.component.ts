@@ -13,6 +13,7 @@ import "rxjs/add/operator/map";
   ]
 })
 export class ContentComponent implements OnInit {
+  // Firebase Observables
   public list: FirebaseListObservable<any[]>;
   public total: FirebaseListObservable<any[]>;
   public remaining: FirebaseListObservable<any[]>;
@@ -21,6 +22,7 @@ export class ContentComponent implements OnInit {
   public calorieAmount; 
   public remainingCalories = 0; 
   public grandTotal = 0; 
+  // input range variables
   public minValue = 1000;
   public maxValue = 3000;
   public targetValue = 1000; 
@@ -32,6 +34,7 @@ export class ContentComponent implements OnInit {
     this.remaining = this.listDB.list('/remaining');
     this.sliderValue = this.listDB.list('/slidervalue');
     this.target = this.listDB.list('/target');
+    // calculate total stored in firebase database
     this.total.forEach(item => {
         for(let i = 0; i < item.length; i++) {
          this.grandTotal += parseInt(item[i].$value);
@@ -43,7 +46,8 @@ export class ContentComponent implements OnInit {
       this.list = this.listDB.list('/item');
       this.remainingCalories = this.targetValue - this.grandTotal; 
   }
-
+  // input range
+  // set target value
   targetValueChange() {
     this.sliderValue.remove();
     this.target.remove();
