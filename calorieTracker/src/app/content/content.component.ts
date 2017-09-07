@@ -58,6 +58,30 @@ export class ContentComponent implements OnInit {
     this.remaining.push(this.remainingCalories);
   }
 
+  // minus one calorie from input range
+  minusOne() {
+    this.targetValue--; 
+    this.sliderValue.remove();
+    this.target.remove();
+    this.remaining.remove();
+    this.remainingCalories = this.targetValue - this.grandTotal;
+    this.sliderValue.push(this.targetValue); 
+    this.target.push(this.targetValue); 
+    this.remaining.push(this.remainingCalories);
+  }
+
+  // add one calorie to input range
+  plusOne() { 
+    this.targetValue++; 
+    this.sliderValue.remove();
+    this.target.remove();
+    this.remaining.remove();
+    this.remainingCalories = this.targetValue - this.grandTotal;
+    this.sliderValue.push(this.targetValue); 
+    this.target.push(this.targetValue); 
+    this.remaining.push(this.remainingCalories);
+  }
+
   add() {
     this.remaining.remove();
     this.grandTotal = 0; 

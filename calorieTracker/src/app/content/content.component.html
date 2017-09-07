@@ -6,7 +6,7 @@
       </div>
     </div>
   <div *ngFor="let item of sliderValue | async">
-  <input type="range" [min]="minValue" [max]="maxValue" [value]="item" data-show-value="true" data-popup-enabled="true" [(ngModel)]="targetValue" (change)="targetValueChange()"> 
+  <span (click)="minusOne()" class="largefont">-</span><input type="range" [min]="minValue" [max]="maxValue" [value]="item" data-show-value="true" data-popup-enabled="true" [(ngModel)]="targetValue" (change)="targetValueChange()"><span (click)="plusOne()" class="largefont">+</span> 
       <h1 class="tomato">value {{targetValue}}</h1>
     <div *ngFor="let item of target | async">
       <h2>Target: {{item.$value}}</h2>
