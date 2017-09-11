@@ -1,6 +1,4 @@
-.container {
-    text-align: center; 
-}
+/*  inputs and buttons  */
 
 input[type=range] {
   height: 62px;
@@ -114,6 +112,12 @@ button:active {
     border-radius: 10px; 
 }
 
+/*  Classes  */
+
+.container {
+    text-align: center; 
+}
+
 .red {
   font-family: 'Unlock', cursive;
   color: lawngreen;
@@ -128,6 +132,8 @@ button:active {
 .largefont {
   font-size: 7rem;
 }
+
+/*   Responsive Design   */
 
 @media only screen and (max-width: 1113px) {
     button {

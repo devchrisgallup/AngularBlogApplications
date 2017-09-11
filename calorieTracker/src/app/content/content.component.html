@@ -1,10 +1,14 @@
 
 <div class="container">
+    <!--if user has not set target calorie 
+    display a message-->
     <div *ngFor="let item of target | async">
       <div *ngIf="item.$value == 0">
         <p>Please enter a Calorie goal for the day.</p>
       </div>
     </div>
+    <!--input range with a on change event with targetValueChange() 
+    that will change values in firebase database-->
   <div *ngFor="let item of sliderValue | async">
   <span (click)="minusOne()" class="largefont">-</span><input type="range" [min]="minValue" [max]="maxValue" [value]="item" data-show-value="true" data-popup-enabled="true" [(ngModel)]="targetValue" (change)="targetValueChange()"><span (click)="plusOne()" class="largefont">+</span> 
       <h1 class="tomato">value {{targetValue}}</h1>
@@ -20,7 +24,8 @@
     <div *ngIf="item.$value >= 0">
       <h2>Remaining: {{item.$value}}</h2>
     </div>
-  </div>  
+  </div>
+  <!--add and remove calorie-->
   <input type="text" [(ngModel)]="calorieAmount" (keydown.enter)="add()" placeholder="Calorie Amount"/>
   <button (click)="removeAll()">Reset</button>
 </div>
