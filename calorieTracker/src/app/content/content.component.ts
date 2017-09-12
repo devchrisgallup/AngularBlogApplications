@@ -83,12 +83,17 @@ export class ContentComponent implements OnInit {
   }
 
   add() {
-    this.remaining.remove();
-    this.grandTotal = 0; 
-    this.total.push(this.calorieAmount);
-    this.remainingCalories = this.targetValue - this.grandTotal;
-    this.remaining.push(this.remainingCalories);
-    this.calorieAmount = ''; 
+    let value = parseInt(this.calorieAmount); 
+    if (Number.isInteger(value)) {
+      this.remaining.remove();
+      this.grandTotal = 0; 
+      this.total.push(this.calorieAmount);
+      this.remainingCalories = this.targetValue - this.grandTotal;
+      this.remaining.push(this.remainingCalories);
+      this.calorieAmount = ''; 
+    } else {
+      this.calorieAmount = ''; 
+    }
   }
 
   removeAll() {
