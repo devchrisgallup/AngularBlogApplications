@@ -7,11 +7,13 @@ html, body {
 }
 
 html {
-  background: url(assets/baseball.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    background: url(assets/baseball.jpg) no-repeat center center fixed; 
+    height: 100vh; /* set viewport constraint */
+    min-height: 100%; /* enforce height */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 h1 {
@@ -24,7 +26,7 @@ ol {
 }
 /*Does not support IE<8*/
 .clearBoth:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
