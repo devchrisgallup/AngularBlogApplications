@@ -8,3 +8,9 @@ html {
     background-size: cover;
     color: #ffffff;
 }
+
+@media only screen and (max-width: 600px) {
+    html {
+        background-image: url("./assets/foodmobile.jpg");
+    }
+}

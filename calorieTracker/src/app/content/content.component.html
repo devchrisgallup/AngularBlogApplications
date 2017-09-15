@@ -10,7 +10,7 @@
     <!--input range with a on change event with targetValueChange() 
     that will change values in firebase database-->
   <div *ngFor="let item of sliderValue | async">
-  <span (click)="minusOne()" class="largefont">-</span><input type="range" [min]="minValue" [max]="maxValue" [value]="item" data-show-value="true" data-popup-enabled="true" [(ngModel)]="targetValue" (change)="targetValueChange()"><span (click)="plusOne()" class="largefont">+</span> 
+  <span (click)="minusOne()" class="largefont">-</span><input type="range" [min]="minValue" [max]="maxValue" [value]="item.$value" data-show-value="true" data-popup-enabled="true" [(ngModel)]="targetValue" (change)="targetValueChange()"><span (click)="plusOne()" class="largefont">+</span> 
       <h1 class="tomato">value {{targetValue}}</h1>
     <div *ngFor="let item of target | async">
       <h2>Target: {{item.$value}}</h2>
@@ -28,4 +28,7 @@
   <!--add and remove calorie-->
   <input type="text" [(ngModel)]="calorieAmount" (keydown.enter)="add()" placeholder="Calorie Amount"/>
   <button (click)="removeAll()">Reset</button>
+  <div *ngIf="!isNumber">
+    <h3>Numbers Only Please</h3>
+  </div>
 </div>

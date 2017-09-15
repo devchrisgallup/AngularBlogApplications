@@ -22,12 +22,14 @@ export class ContentComponent implements OnInit {
   public calorieAmount; 
   public remainingCalories = 0; 
   public grandTotal = 0; 
+  public isNumber = true; 
   // input range variables
   public minValue = 1000;
   public maxValue = 3000;
   public targetValue = 1000; 
 
   constructor(private listDB: AngularFireDatabase) { 
+    console.log('constructor'); 
     var i = 0; 
     this.list = this.listDB.list('/item');
     this.total = this.listDB.list('/total'); 
@@ -43,7 +45,11 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit() {
+      console.log(this.sliderValue); 
       this.list = this.listDB.list('/item');
+      this.sliderValue.forEach(item => {
+        this.targetValue = item[0].$value; 
+      });
       this.remainingCalories = this.targetValue - this.grandTotal; 
   }
   // input range
@@ -85,6 +91,7 @@ export class ContentComponent implements OnInit {
   add() {
     let value = parseInt(this.calorieAmount); 
     if (Number.isInteger(value)) {
+      this.isNumber = true; 
       this.remaining.remove();
       this.grandTotal = 0; 
       this.total.push(this.calorieAmount);
@@ -93,11 +100,13 @@ export class ContentComponent implements OnInit {
       this.calorieAmount = ''; 
     } else {
       this.calorieAmount = ''; 
+      this.isNumber = false; 
     }
   }
 
   removeAll() {
     let zero = 0; 
+    this.targetValue = 0; 
     this.sliderValue.remove();
     this.target.remove();
     this.remaining.remove();
