@@ -136,7 +136,7 @@ export class LoginComponent implements OnInit {
     // update progress bar
     task.on(firebase.storage.TaskEvent.STATE_CHANGED, 
       (snapshot) => {
-        var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        var percentage = (task.snapshot.bytesTransferred / task.snapshot.totalBytes) * 100;
         this.progressVal = percentage; 
       },
       (error) => {
