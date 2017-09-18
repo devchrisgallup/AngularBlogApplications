@@ -109,6 +109,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  loginAnonymous() {
+    let size = this.colorArray.length;
+    this.getRandomColor(0,size); 
+    this.af.auth.signInAnonymously();
+    this.af.authState.subscribe(auth => {
+      this.userUid = auth.uid;
+    });
+  }
+
   logout() {
     this.af.auth.signOut();
   }
