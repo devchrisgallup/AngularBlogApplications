@@ -1,3 +1,2 @@
-export const firebaseConfig = {
-    //Your Key
+export const firebaseConfig = {  
 }

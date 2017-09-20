@@ -125,10 +125,19 @@ export class LoginComponent implements OnInit {
   sendData(item: string) {
     // push user input to 
     // used for the chat feature
-    this.items.push({
-      message: item,
-      name:this.userName
-    });
+    // checks if userName is set 
+    // if not set userName to Anonymous
+    if (this.userName) {
+      this.items.push({
+        message: item,
+        name:this.userName
+      });
+    } else {
+      this.items.push({
+        message: item,
+        name:'Anonymous'
+      });
+    }
 
     this.messageValue = '';
   }
