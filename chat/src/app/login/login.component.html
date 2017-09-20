@@ -20,7 +20,7 @@
 <!--upload file input-->
   <div *ngIf="(user | async)?.uid" >
     <h3 class="txtcenter datemargin">{{month + 1}}/{{day}}/{{year}}</h3>
-    <h4 class="txtcenter datemargin">{{7 - daysLeft}} Day(s) to vote</h4>
+    <!--<h4 class="txtcenter datemargin">{{7 - daysLeft}} Day(s) to vote</h4>-->
     <h1 class="txtcenter nowright">Photos</h1>
   <div *ngIf="(user | async)?.uid" id="imageloader">
     <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
@@ -36,9 +36,12 @@
 <!--Display images that have been uploaded 
 to Firebase Storage-->
   <div id="imagecontainer" *ngIf="(user | async)?.uid">
-    <div id="imagelist" *ngFor="let item of imageUrlArray">
-      <a [href]="item" target="_blank"><img [src]="item" /></a>
-      <div class="vote" (click)="upvote(item)">[+] 0</div><div class="vote">[-]</div>
+    <div id="imagelist" *ngFor="let item of imageUrlArray; let i = index">
+      <a [href]="item" target="_blank"><img [src]="item" /></a><br>
+      <span class="vote">{{imageNameArray[i]}}</span>
+      <!--<div class="vote" (click)="upvote(item)">[+] 0</div><div class="vote">[-]</div>-->
     </div>
   </div>
+
+  
   

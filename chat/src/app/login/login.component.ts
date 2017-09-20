@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
   public placeholder; 
   public upload = 'Upload'; 
   public imageUrlArray = []; 
+  public imageNameArray = []; 
   public time; 
   public month; 
   public day; 
@@ -67,8 +68,10 @@ export class LoginComponent implements OnInit {
             let i = 0; 
             item.forEach(items => {
               let strRef = firebase.storage().ref().child('photos/' + items.imageUrl);
+              let imageName = items.name; 
               strRef.getDownloadURL().then(url => {
                   this.imageUrlArray[i] = url;
+                  this.imageNameArray[i] = imageName;
                   i++; 
               });  
             }); 
@@ -165,7 +168,11 @@ export class LoginComponent implements OnInit {
         this.upload = 'Success!';
         // store file metadata 
         // used for firebase storage download
-        this.imageUrl.push({imageUrl: file.name, name: this.userName}); 
+        if (this.userName) {
+          this.imageUrl.push({imageUrl: file.name, name: this.userName}); 
+        } else {
+          this.imageUrl.push({imageUrl: file.name, name: 'Anonymouse'}); 
+        }
         this.display = 'block'; 
         this.upload = 'Upload'; 
         this.loading = 'none'; 
