@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
   public messageValue: string = ''; 
   public userUid; 
   public userName;
-  public colorArray = ['red', 'orange', 'green', 'blue']; 
-  public color = 'red'; 
+  public colorArray = ['gray']; 
+  public color = 'gray'; 
   public progressVal: number = 0; 
   public image;
   public imageUrl: FirebaseListObservable<any[]>;
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
         this.userName = auth.displayName;
         this.imageUrl = this.db.list('/photos', {
           query: {
-            limitToLast: 20,
+            limitToLast: 12,
           } 
         });
         // image URL's are stored in firebase realtime database

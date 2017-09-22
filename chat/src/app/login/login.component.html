@@ -5,23 +5,23 @@
     <div class="gravatartext">Hello {{(user | async)?.displayName}}</div>
   </div>
   <div *ngIf="(user | async)?.uid && !(user | async)?.email" class="gravatar">
-    <a title="Log Out"><img *ngIf="(user | async)?.uid" (click)="logout()" src="../assets/frog.jpg" ></a>
+    <a title="Log Out"><img *ngIf="(user | async)?.uid" (click)="logout()" src="assets/frog.jpg" ></a>
     <div class="gravatartext">Hello Anonymous</div>
   </div>
   <div *ngIf="(user | async)?.uid" class="upload">
     <h1 [innerHtml]="upload">Upload</h1>
   </div>
   <div id="login" *ngIf="!(user | async)?.uid" [style.display]="display">
-    <h1 class="largefont">Welcome to Top Photo</h1>
+    <h1 class="largefont">Welcome to Photo Talk</h1>
     <h3>Sign in With:</h3>
-    <button *ngIf="!(user | async)?.uid" (click)="login()">Sign in with Google</button><br>
-    <button *ngIf="!(user | async)?.uid" (click)="loginAnonymous()">Anonymous Sign in</button>
+    <button *ngIf="!(user | async)?.uid" (click)="login()">Google<img src="assets/google.png" alt="Google Logo"></button><br>
+    <button *ngIf="!(user | async)?.uid" (click)="loginAnonymous()">Anonymous</button>
   </div>
 <!--upload file input-->
   <div *ngIf="(user | async)?.uid" >
     <h3 class="txtcenter datemargin">{{month + 1}}/{{day}}/{{year}}</h3>
     <!--<h4 class="txtcenter datemargin">{{7 - daysLeft}} Day(s) to vote</h4>-->
-    <h1 class="txtcenter nowright">Photos</h1>
+    <h1 class="txtcenter nowright">Latest Photos</h1>
   <div *ngIf="(user | async)?.uid" id="imageloader">
     <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
     <input type="file" value="upload" (change)="fileButton($event)">

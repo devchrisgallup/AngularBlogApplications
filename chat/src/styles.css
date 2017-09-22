@@ -16,6 +16,12 @@ button {
     cursor: pointer;
 }
 
+button img {
+    width: 20px; 
+    height: 20px; 
+    margin-bottom: -10px; 
+}
+
 input[type="text"] {
     background-color: #4CAF50;
     color: white;
@@ -52,7 +58,7 @@ input[type="text"]::-webkit-input-placeholder {
 ul {
     color: #fff;
     width: fit-content;
-    background-color: #4CAF50; 
+    background-color: gray; 
     margin-left: 0.5%; 
     padding: 0.5%; 
     list-style-type: none; 
