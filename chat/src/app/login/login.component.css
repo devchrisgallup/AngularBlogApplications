@@ -1,3 +1,7 @@
+progress {
+    width: 20%; 
+}
+
 #login {
     position: absolute;
     width: 100%;

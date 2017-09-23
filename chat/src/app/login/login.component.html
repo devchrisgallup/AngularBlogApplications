@@ -31,10 +31,10 @@
       <ul *ngFor="let item of items | async" [style.background]="color">
         <li>{{item.name}}: {{item.message}}</li>
       </ul>
-  <input type="text" *ngIf="(user | async)?.uid" placeholder="Press enter to chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
   </div>
+  <input type="text" *ngIf="(user | async)?.uid" placeholder="Press enter to chat" (keyup.enter)="sendData($event.target.value)" [(ngModel)]="messageValue" />
 <!--Display images that have been uploaded 
-to Firebase Storage-->
+    to Firebase Storage-->
   <div id="imagecontainer" *ngIf="(user | async)?.uid">
     <div id="imagelist" *ngFor="let item of imageUrlArray; let i = index">
       <a [href]="item" target="_blank"><img [src]="item" /></a><br>
