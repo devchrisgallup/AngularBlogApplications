@@ -148,36 +148,41 @@ export class LoginComponent implements OnInit {
   fileButton(event) {
     this.display = 'none'; 
     this.loading = 'block';
+    let pattern = /image-*/;
     // get file
     let file = event.target.files[0]; 
-    // create a storage ref
-    let storageRef = firebase.storage().ref('photos/' + file.name); 
-    // upload file
-    let task = storageRef.put(file); 
-    // update progress bar
-    task.on(firebase.storage.TaskEvent.STATE_CHANGED, 
-      (snapshot) => {
-        var percentage = (task.snapshot.bytesTransferred / task.snapshot.totalBytes) * 100;
-        this.progressVal = percentage; 
-      },
-      (error) => {
-        console.log('Error Saving date to firebase storage.');
-      }, 
-      () => {
-        console.log('Firebase Storage data save success.');
-        this.upload = 'Success!';
-        // store file metadata 
-        // used for firebase storage download
-        if (this.userName) {
-          this.imageUrl.push({imageUrl: file.name, name: this.userName}); 
-        } else {
-          this.imageUrl.push({imageUrl: file.name, name: 'Anonymouse'}); 
-        }
-        this.display = 'block'; 
-        this.upload = 'Upload'; 
-        this.loading = 'none'; 
-        this.progressVal = 0;  
-      });
+    if(!file.type.match(pattern)) {
+      console.log('Wrong file type.')
+    } else {
+      // create a storage ref
+      let storageRef = firebase.storage().ref('photos/' + file.name); 
+      // upload file
+      let task = storageRef.put(file); 
+      // update progress bar
+      task.on(firebase.storage.TaskEvent.STATE_CHANGED, 
+        (snapshot) => {
+          var percentage = (task.snapshot.bytesTransferred / task.snapshot.totalBytes) * 100;
+          this.progressVal = percentage; 
+        },
+        (error) => {
+          console.log('Error Saving date to firebase storage.');
+        }, 
+        () => {
+          console.log('Firebase Storage data save success.');
+          this.upload = 'Success!';
+          // store file metadata 
+          // used for firebase storage download
+          if (this.userName) {
+            this.imageUrl.push({imageUrl: file.name, name: this.userName}); 
+          } else {
+            this.imageUrl.push({imageUrl: file.name, name: 'Anonymouse'}); 
+          }
+          this.display = 'block'; 
+          this.upload = 'Upload'; 
+          this.loading = 'none'; 
+          this.progressVal = 0;  
+        });
+      }
   }
   // random color for chat ul li
   getRandomColor(top, bottom) { 

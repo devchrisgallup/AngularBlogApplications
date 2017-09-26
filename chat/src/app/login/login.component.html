@@ -24,7 +24,7 @@
     <h1 class="txtcenter nowright">Latest Photos</h1>
   <div *ngIf="(user | async)?.uid" id="imageloader">
     <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
-    <input type="file" value="upload" (change)="fileButton($event)">
+    <input type="file" value="upload"  accept="image/*" (change)="fileButton($event)">
   </div>
 <!--chat list items-->
   <div *ngIf="(user | async)?.uid">
