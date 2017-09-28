@@ -4,6 +4,7 @@
     <a title="Log Out"><img *ngIf="(user | async)?.uid" (click)="logout()" [src]="(user | async)?.photoURL" ></a>
     <div class="gravatartext">Hello {{(user | async)?.displayName}}</div>
   </div>
+<!--display information for an Anonymous user Login-->
   <div *ngIf="(user | async)?.uid && !(user | async)?.email" class="gravatar">
     <a title="Log Out"><img *ngIf="(user | async)?.uid" (click)="logout()" src="assets/frog.jpg" ></a>
     <div class="gravatartext">Hello Anonymous</div>
@@ -38,7 +39,7 @@
     to Firebase Storage-->
   <div id="imagecontainer" *ngIf="(user | async)?.uid">
     <div id="imagelist" *ngFor="let item of imageUrlArray; let i = index">
-      <a [href]="item" target="_blank"><img [src]="item" /></a><br>
+      <a [href]="item" target="_blank"><img [src]="item" [alt]="item"/></a><br>
       <span class="vote">{{imageNameArray[i]}}</span>
       <!--<div class="vote" (click)="upvote(item)">[+] 0</div><div class="vote">[-]</div>-->
     </div>

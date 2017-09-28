@@ -149,6 +149,9 @@ export class LoginComponent implements OnInit {
   fileButton(event) {
     this.display = 'none'; 
     this.loading = 'block';
+    // pattern to only accept 
+    // an image extension as an upload item
+    // else display an error message to the user
     let pattern = /image-*/;
     // get file
     let file = event.target.files[0]; 
