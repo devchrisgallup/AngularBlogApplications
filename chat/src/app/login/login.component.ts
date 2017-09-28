@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
   public minusDays;  
   public upVote; 
   public downVote; 
+  public phototype = true; 
 
   constructor(public af: AngularFireAuth, public db: AngularFireDatabase) {
     // Firebase Authentication 
@@ -152,8 +153,10 @@ export class LoginComponent implements OnInit {
     // get file
     let file = event.target.files[0]; 
     if(!file.type.match(pattern)) {
+      this.phototype = false; 
       console.log('Wrong file type.')
     } else {
+      this.phototype = true; 
       // create a storage ref
       let storageRef = firebase.storage().ref('photos/' + file.name); 
       // upload file

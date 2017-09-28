@@ -23,6 +23,7 @@
     <!--<h4 class="txtcenter datemargin">{{7 - daysLeft}} Day(s) to vote</h4>-->
     <h1 class="txtcenter nowright">Latest Photos</h1>
   <div *ngIf="(user | async)?.uid" id="imageloader">
+    <div *ngIf="!phototype">Aw, Snap! That was the wrong file type.  Please select a photo to upload.</div><br>
     <progress value="{{progressVal}}" max="100">{{progressVal}}</progress><br>
     <input type="file" value="upload"  accept="image/*" (change)="fileButton($event)">
   </div>
