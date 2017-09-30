@@ -181,7 +181,7 @@ export class LoginComponent implements OnInit {
           if (this.userName) {
             this.imageUrl.push({imageUrl: file.name, name: this.userName}); 
           } else {
-            this.imageUrl.push({imageUrl: file.name, name: 'Anonymouse'}); 
+            this.imageUrl.push({imageUrl: file.name, name: 'Anonymous'}); 
           }
           this.display = 'block'; 
           this.upload = 'Upload'; 
