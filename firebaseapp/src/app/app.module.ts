@@ -7,15 +7,17 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
  
 
 import { AppComponent } from './app.component';
+import { EditComponent } from './features/edit/edit.component';
 
 // Initialize Firebase
 const firebaseConfig = {
-// YourKey
+  // Your Key
 };
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
